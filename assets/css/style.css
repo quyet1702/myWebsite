@@ -1,0 +1,40 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    height: 3em;
+    background-color: blue;
+    color: #fff;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+}
+
+header .header__nav li {
+    display: inline-block;
+    padding: 0px 1em;
+    line-height: 3em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header .header__nav li:hover {
+    background-color: rgb(16, 4, 124);
+    cursor: pointer;
+}
+
+main .slider__container {
+    margin-top: 3em;
+    padding-top: 120%;
+    background-image: url('/assets/img/avatar.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
