@@ -11,6 +11,7 @@ function date() {
 }
 
 var clock = document.getElementById('header__clock');
+clock.textContent = date();
 setInterval(function(){
     clock.textContent = date();
 }, 1000);
