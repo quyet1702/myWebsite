@@ -15,3 +15,9 @@ setInterval(function(){
     clock.textContent = date();
 }, 1000);
 // END: HEADER__CLOCK
+
+// BEGIN: MY WALLET\
+var myWallet = " " + "283 000" + "  VNĐ";
+var wallet = document.querySelector('.header__nav-right li i');
+wallet.textContent = myWallet;
+// END: MY WALLET
