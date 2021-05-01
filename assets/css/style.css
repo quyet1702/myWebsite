@@ -59,3 +59,32 @@ main .slider__container {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* BEGIN: NAV__MOBILE */
+header .nav__mobile {
+
+}
+
+header .nav__mobile {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 20px;
+}
+
+header .nav__mobile div {
+    background-color: #fff;
+    width: 20px;
+    height: 3px;
+    margin: 2px 0px;
+}
+
+header .nav__mobile div:nth-child(2) {
+    margin: 2px 0px;
+    transition: margin .2s;
+    
+}
+
+header .nav__mobile:hover div:nth-child(2) {
+    margin: 4px 0px;
+}

@@ -2,4 +2,8 @@
     header .header__nav-left {
         display: none;
     }
+
+    header .nav__mobile {
+        display: flex;
+    }
 }
