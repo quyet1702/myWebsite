@@ -18,6 +18,10 @@ header {
     left: 0px;
 }
 
+header .header__nav {
+    display: inline-block;
+}
+
 header .header__nav li {
     display: inline-block;
     padding: 0px 1em;
@@ -29,6 +33,13 @@ header .header__nav li {
 header .header__nav li:hover {
     background-color: rgb(0, 0, 131);
     cursor: pointer;
+}
+
+header #header__clock {
+    float: right;
+    line-height: 3em;
+    padding: 0px 20px;
+    font-weight: bold;
 }
 
 main .slider__container {

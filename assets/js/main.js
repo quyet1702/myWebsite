@@ -1,3 +1,4 @@
+// BEGIN: HEADER__CLOCK
 function date() {
         var date = new Date();
         var hours = date.getHours();
@@ -6,9 +7,11 @@ function date() {
         var year = date.getFullYear();
         var month = date.getMonth() + 1;
         var day = date.getDate();
-        return `${hours}:${minutes}:${seconds}  ${day}/${month}/${year}`
+        return `${hours}:${minutes}:${seconds} -- ${day}/${month}/${year}`
 }
-setInterval(function(){
-    console.log(date());
-}, 1000);
 
+var clock = document.getElementById('header__clock');
+setInterval(function(){
+    clock.textContent = date();
+}, 1000);
+// END: HEADER__CLOCK
