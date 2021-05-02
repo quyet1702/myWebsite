@@ -6,6 +6,8 @@
 
 html {
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-size: 15px;
 }
 
 ul li {
@@ -41,16 +43,50 @@ header .header__nav-left li:hover {
     cursor: pointer;
 }
 
+/* BEGIN: HEADER__NAV-RIGHT */
 header .header__nav-right li {
     font-weight: bold;
     line-height: 3em;
     color: #fff;
     display: inline-block;
+    position: relative;
+}
+
+header .header__nav-right li:hover .form__wallet {
+    display: block;
+}
+
+header .form__wallet {
+    position: absolute;
+    display: none;
+    box-shadow: 1px 1px 10px #000;
+    background-color: #fff;
+    color: #000;
+    top: 3em;
+    left: 0px;
+    line-height: 1.5;
+    font-weight: 500;
+    min-width: 250px;
+}
+
+header .form__money-now {
+
+}
+
+header .form__key-money {
+    color: #000;
+    padding: 0px 10px;
+    display: inline-block;
+}
+
+header .form__value-monney {
+
 }
 
 header #header__clock {
     padding: 0px 20px;
 }
+/* END: HEADER__NAV-RIGHT */
 
 main .slider__container {
     margin-top: 3em;
