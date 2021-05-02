@@ -70,9 +70,9 @@ header .form__wallet {
     font-size: 13px;
 }
 
-header .form__money-now {
-    font-size: 12px;
-    text-align: center;
+.form__date {
+    color: red;
+    margin-left: 20px;
 }
 
 header .form__key-money {
@@ -80,6 +80,7 @@ header .form__key-money {
     padding: 0px 10px;
     display: block;
     color: red;
+    text-align: center;
     font-size: 12px;
 }
 
