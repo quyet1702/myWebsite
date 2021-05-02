@@ -7,7 +7,16 @@ function date() {
         var year = date.getFullYear();
         var month = date.getMonth() + 1;
         var day = date.getDate();
-        return `${hours}:${minutes}:${seconds} -- ${day}/${month}/${year}`
+        var a = '';
+        var b = '';
+        function style(reset, time){
+            if (time < 10) {
+                reset = '0';
+                return reset;
+            }  
+            return reset;
+        }
+        return `${hours}:${style('',minutes)}${minutes}:${style('',seconds)}${seconds} -- ${day}/${month}/${year}`
 }
 
 var clock = document.getElementById('header__clock');
