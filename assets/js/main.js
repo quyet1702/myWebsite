@@ -27,7 +27,16 @@ setInterval(function(){
 // END: HEADER__CLOCK
 
 // BEGIN: MY WALLET\
-var myWallet = " " + "167 000" + "  VNĐ";
+// var myWallet = " " + "167 000" + "  VNĐ";
 var wallet = document.querySelector('.header__nav-right li i');
-wallet.textContent = myWallet;
+myWallet()
+function myWallet(){
+    fetch("http://localhost:3000/posts")
+    .then(function(reponse){
+        return reponse.json();
+    })
+    .then(function(post){
+        wallet.textContent =` ${post[0]}`;
+    });
+}
 // END: MY WALLET
