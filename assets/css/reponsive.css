@@ -1,9 +1,0 @@
-@media only screen and (max-width: 46.1875em) {
-    header .header__nav-left {
-        display: none;
-    }
-
-    header .nav__mobile {
-        display: flex;
-    }
-}
