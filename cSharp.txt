@@ -1,0 +1,1481 @@
+- Cơ Bản:
+	- Install sdk+runtime .net trên web
+	- Tạo project: dotnet new {console|razor|web|...}   
+	- Chạy visual code: code .
+	- Terminal:
+		dotnet build				-> Tạo file build: 		
+		dotnet path...				-> Chạy file build: 		
+		dotnet run				-> biên dịch và chạy file build: 					-> 
+		dotnet publish -c Release hoặc dotnet publishcopy 	->folder publish để chạy chương trình ở bất kỳ đâu:		
+		dotnet add package PackageName		-> thêm package					- 
+		dotnet remove package PackageName 	-> Xóa package 			
+	 	dotnet restore				-> cập nhật lại package từ file .csproj
+		cách tự thêm package: 			chỉnh file .csproj rồi chạy lệnh dotnet restore
+Kiến thức khác:
+	nắm vững: 
+		- kiểu dữ liệu
+			số
+			string: 
+				Non-nullable +  Non-null(null!) + chữ
+			null
+				null literal or possible null
+		- giá trị:
+			null = null!
+			empty = ""
+			nullable
+			123,...
+			"chuoi"
+		- biến không có giá trị
+		- biến có giá trị
+Kiểu dữ liệu:	<Đóng gói> <Lệnh bổ trợ> <kieudulieu>	tenbien = giá trị;
+	- Đóng gói:
+		private (mặc định): 	sử dụng trong class
+		protected:  		sử dụng trong class và kế thừa
+		internal: 		sử dụng trong namespace
+		public: 		sử dụng mọi nơi
+	- Lệnh bổ trợ:
+		readonly		Chỉ có thể đọc và thay đổi bằng phương thức khởi tạo
+		const			không thể thay đổi giá trị
+	- Kiểu dữ liệu:
+		- number:
+			- Integer Type: byte 8bit- sbyte, short 16bit - ushort, int 32bit - uint, long 64bit - ulong
+			- Float Point Type: float 32 bit, double 64 bit, decimal 128 bit
+			- kiểm tra giới hạn: Console.WriteLine(kieudulieu.MaxValue); Console.WriteLine(kieudulieu.MinValue);
+			- Nullable:
+				- khai báo:
+					cách 1: Nullable<int> i = null;
+					cách 2: int ? = null
+				- sử dụng:
+					- Nullable đại diện cho phạm vi + null. ví dụ phạm vi kiểu int từ -2147483648 to 2147483647 + null
+					- kiểm tra: 	i.HasValue // kiểm tra biến i và trả về boolean
+					- trả về giá trị của biến: a.Value
+					- chỉ có thể gắn cho x khi x là null: x ??= 5;
+			- Hàm số:
+				- Math.Max(x,y)
+				- Math.Min(x,y)
+				- Math.Sqrt(x)
+				- Math.Abs(x)		=> trả về giá trị tuyệt đối
+				- Math.Round()
+		- DateTime:
+			
+			- DateTime date = new DateTime(1998,02,17);			//(year,month,day)
+			- DateTime myDate = new DateTime(2015, 12, 25, 10, 30, 45);  	//(year,month,day,hour,minute,second)
+			- TimeSpan addhour = new TimeSpan(2,0,55);			//(hour,minutes,second)
+            	  		Console.WriteLine(date.ToString());
+			- DateTime date= DateTime.(MaxValue|MinValue|Now|Today;
+				-> int date= myDate.(Year|Month|Day|Hour|Minute|Second|DayOfYear); // (2015|12|20|11|49|23|198)  
+				-> int weekDay = (int)myDate.DayOfWeek; // 5
+				-> DayOfWeek weekDay = myDate.DayOfWeek; //Friday
+				- TimeSpan a = myDate.TimeOfDay; 	//12:08:59.2817321
+			- Cộng thêm giờ:	
+			
+          		DateTime newDate = date.Add(addhour);	//date được tăng thêm 2h 0 phút 55s
+			date.Value.ToShortDateString()			=> in ngày/tháng/năm
+			- format DateTime: Tham khảo http://csharp.net-informations.com/language/date.htm
+				String.Format("{0:T}", DateTime)			=> 11:50:20
+				String.Format("{0:d}", DateTime)			=> 22/01/2022
+				Console.WriteLine($"{currentDate:d}");			=> lấy ngày: 22/01/2022
+				Console.WriteLine($"{currentDate:d}");			=> lấy giờ: 11:50
+		- object:
+			- khai báo: object abj = "quyet";
+			- sử dụng: kiểu này nhận mọi dữ liệu trừ kiểu class
+			- có thể tự thay đổi kiểu dữ liệu
+		- Random:	Random a = new Ramdom()
+			random.Next(10);		=> tạo số int có giá trị thấp nhất là 0 và giá trị max là 9,
+		- char: 
+			char a = 'q';	lưu 1 ký tự trong ngoặc đơn
+		- String:
+			- "Mr." + firstName + " ";		=> trả về chuỗi
+			- $"Mr. {firstName} {lastName}"; 		=> trả về chuỗi
+			- $"{firstName,30}"			=> trả về chuỗi có dạng: khoảng trắng + firstName = 30 ký tự
+			- $"{firstName,-30}"			=> trả về chuỗi có dạng: firstName + khoảng trắng = 30 ký tự
+			- MyString.IndexOf('F');		=> trả về index của ký tự F
+			- chars.StartsWith("ss");		=> kiểm tra chuỗi có bắt đầu bằng chuỗi ss hay không; có phân biệt hoa thường
+			- chars.EndsWith("ss");			=> kiểm tra chuỗi có kết thúc bằng chuỗi ss hay không; có phân biệt hoa thường
+			- MyString.Length;			=> trả về độ dài chuỗi
+			- myString[5]				=> trả về ký tự theo index
+			- MyString.Split(' ');			=> trả về mảng chuỗi từ ' '
+			- string.Join('-', ArrayString);	=> trả về chuỗi từ ArrayString và được ngăn cách bởi '-'
+			- new string(arrayChar);		=> trả về chuỗi từ array kiểu char
+			- string.empty;				=> trả về chuỗi rỗng
+			- MyString.Replace("Quyet","Tam");	=> trả về chuỗi từ tìm kiếm chuỗi "Quyet" và thay bằng "Tam"
+			- string.Concat(MyString, "áds");	=> trả về chuỗi được nối từ 2 chuỗi; các mảng chuỗi; mảng char; các mảng số
+				string.Concat(myArray);		=> trả về chuỗi từ array chuỗi
+			- MyString.Insert(10,"hello");		=> trả về chuỗi được chèn thêm "hello" vào index
+			- MyString.Substring(8);		=> trả về chuỗi từ index 8 đến hết
+			- MyString.Substring(4,6);		=> trả về chuỗi từ index 4 và lấy 6 ký tự
+			- MyString.Trim();			=> trả về chuỗi được loại bỏ khoảng trắng 2 đầu của chuỗi
+				MyString.Trim('*')		=> trả về chuỗi được loại bỏ dấu * ở đầu và cuối chuỗi
+				MyString.TrimStart(); 		=> trả về chuỗi chỉ cắt ở đầu
+				MyString.TrimEnd();		=> trả về chuỗi chỉ cắt ở cuối
+			- MyString.ToLower();			=> trả về chuỗi in thường
+			- MyString.ToUpper();			=> trả về chuỗi in hoa
+			- MyString.Remove(5);			=> trả về chuỗi được xóa chuỗi từ index 5 đến hết
+			- MyString.Remove(5,9);			=> trả về chuỗi được xóa chuỗi từ index 5 và chỉ xóa 9 ký tự  
+			- StringBuilder chuoi = new StringBuilder();	=> tạo chuỗi bằng StringBuilder giúp tiết kiệm bộ nhớ tăng hiệu năng. nó cấp phát cho chuỗi 1 bộ nhớ, và các lệnh thao tác với chuỗi cũng chỉ nằm trên bộ nhớ đó
+				- chuoi.Append("xin chao");		=> thêm vào chuỗi
+				- string thongbao = chuoi.ToString();
+			-FormatString:
+				String.Format(“{0:0,0 vnđ}”, 20000000);			=> định dạng tiền tệ	
+			
+	
+	Linq: khai báo: List<Object> objects = new List<Object>(){..}
+		objects.Where(x => x==0);			=> trả về list thỏa mãn điều kiện
+			.Single(p => p.Price == 1000);		=> trả về 1 phần tử thỏa mãn điều kiện, nếu không tìm thấy thì sinh lỗi, nếu có 2 phần tử thỏa điều kiện thì sinh lỗi
+			.SingleOrDefault(p => p.Price == 1000);	=> trả về 1 phần tử thỏa mãn điều kiện, nếu không tìm thấy thì trả về null, nếu có 2 phần tử thỏa điều kiện thì sinh lỗi
+			.toList().ForEach(){(x)//code lamda};	=> tạo vòng vặp với số lần lặp là số phần tử
+			.Average(e=>e.Price);			=> trả về giá trị trung bình
+			.Max(e=>e.Price);			=> trả về giá trị cao nhất
+			.Min(e=>e.Price);			=> trả về giá trị thấp nhất
+			.Count();				=> đếm số phần tử
+			.OrderBy(x=>x.Price);			=> sắp xếp tăng dần
+			.OrderByDescending(p => p.Price)	=> sắp xếp giảm dần
+			.Take(3);				=> trả về List gồm 3 phần tử đầu
+			.Skip(3);				=> bỏ qua 3 phần tử đầu tiên, lấy các phần tử còn lại			
+			.Any(p => p.Price == 400);		=> trả về true nếu có ít nhất 1 phần tử thỏa mãn điều kiện, ngược lại trả false
+			.Reverse();				=> đảo ngược index của mảng IEnumrable
+			.Select(x=>x.Price=213);		=> lặp qua từng phần tử và gắn giá trị mới cho phần tử đó
+			.GroupBy(p => p.Price);			=> groupBy gom nhóm theo 1 thuộc tính nào đó
+			.RemoveAt(2);				=> void => xóa 1 phần tử theo index = 2
+			.Remove(value);				=> xóa 1 phần tử theo giá trị, tính từ trên xuống dới
+			.Insert(index,value);			=> thêm 1 phần tử vào index
+			.InsertRange(1,new int[]{1,2,3});	=> thêm nhiều phần tử vào vị trí index = 1
+			.AddRange(mảng)				=> thêm nhiều phần tử
+			.Add(1);				=> thêm 1 phần tử
+			.Find(e=> e==5)				=> tìm theo phần tử
+			.FindAll(e=> e>5)			=> tìm tất cả các phần tử thỏa mãn điều kiện và trả về list
+			.Sort((p1,p2) => {if(p1.Id == p2.Id) return 0;if(p1.Id < p2.Id) return -1;return 0;});	=> sắp xếp
+			.selectMany((x)//code lamda return);		giống select nhưng, nếu mỗi phần tử là 1 mảng thì nó sẽ in ra thành từng chuỗi
+		inner join: Table1.Join(Table2, Table1 => Table1.Id, Table2 => Table2.Id,(Table1,Table2)=> new {Name = Table1.Name,Brand =  Table2.Name});
+		- GroupJoin:	Đây là gom nhóm theo 1 trường nào đó
+			IEnumerable<Product> p = brands.GroupJoin(products, b => b.ID, p => p.Brand,(b,p)=> new {thuong_hieu = b.Name, san_pham = p});
+				- những thành phần của product đc sẽ gom lại theo thuộc đối tượng brand Id
+
+		- int a = products
+			int a = products.Count(products=>products.Price>=500);	=> đếm số phần từ thỏa mãn điều kiện
+		- join 2 bảng theo khoá ngoại và select theo điều kiện where: 
+						Product = await _connext.Products
+							.Include(e=>e.PromotionGift)
+							.Where(e=>e.FullName=="Quyết")
+							.ToListAsync();
+						- Sử dụng Include để join bảng Product và bảng promotionGift
+				Chú ý phương thức này chỉ sử dụng khi có khóa chính và khóa ngoại
+		HashSet:	giống kiểu List tới 90% nhưng các giá trị trùng nhau sẽ chỉ lấy 1
+			- khai báo: HashSet<int> a = new HashSet<int>(){1,1,2,3,4};
+			- in giá trị phải dùng foreach:	kết quả in: 1,2,3,4
+			- thêm phần tử: a.Add(1);
+			- đếm số phần tử:	int c =  a.Count() 	
+			- xóa1  phần tử: a.Remove(1);	xóa phần tử có giá trị là: 1
+			- xóa tất cả phần tử : a.Clear();
+			- hợp của 2 mảng HashSet: a.UnionWith(b);	=> void => lấy 2 trị của 2 mảng hashSet, nhưng ko lấy giá trị trùng và lưu vào biến a,
+			- giao của 2 mảng hashSet: a.IntersectWith(b);	=> void => lấy các giá trị trùng giữa 2 hashSet và lưu vào biến a
+			- loại bỏ phần tử chung: a.ExceptWith(b)		=> loại bỏ các phần tử chung với hashSet b
+			- kiểm tra tập con: bool c= a.IsSubsetOf(b)		=> kiểm tra xem có là tập con của hashSet b
+			- Kiểm tra chứa: IsSupersetOf(b)			=> kiểm tra xem có chứa hashSet b hay ko
+		- array:
+			- khai báo: object myObject = new[] {"quyet", 1212};
+			- kiểu object là 1 mảng nhưng chứa được nhiều kiểu dữ liệu khác nhau
+			- làm phẳng mảng: string.Join(" - ",myArray);	
+			- int[] myInt = {22,33,44};  -> là 1 mảng chỉ chứa đc kiểu dữ liệu là int
+			- tương tự với các kiểu dữ liệu khác
+		Stack: hàng đợi, vào trước ra sau
+			- khai báo: Stack<string> a = new Stack<string>();
+			- a.Push("san pham 1");		=> thêm sản phẩm
+			- a.Push("san pham 2");		
+			- a.Peek()			=> đọc từ đỉnh
+			- a.Pop()			=> đọc và xóa từ đỉnh
+			- a.Count()			=> đếm số phần tử
+			- a.Containt("san pham1")			=> kiể tra phần tử có tồn tại hay không
+		- var:
+			- không thể sử dụng với property
+		- Kiểu tham chiếu: là kiểu mà 2 biến có thể cùng trỏ vào 1 ô nhớ
+			ví dụ: product a = new product();
+				product b = a;
+				a.Name = "quyet"
+				Console.WriteLine(b.Name);		//quyet
+			- khi a thay đổi thì b sẽ thay đổi theo
+			 các kiểu tham chiếu là: class, delegate, interface
+			
+		dynamic:
+			- mô tả: dữ liệu sẽ được xác định kiểu dữ liệu sau, được phép khai báo và gắn mà không bị lỗi
+				gần giống với kiểu object nhưng nó nhận cả kiểu class
+			- đối với kiểu class:
+				- nó sẽ không kiểm tra function, số lượng tham số, kiểu tham số
+			- khai báo:
+			- dynamic tenbien;
+			- tenbien = new {};
+			- tenbien.phuongthuckhongtontai();
+			- tenbien.thuoctinhkhongtontai = "sadfd";
+		- Tuple:
+			- Mô tả: Tuple là 1 đối tượng (class) có các tham số là generic, giúp việc không phải định nghĩa kiểu dữ liệu
+			- có tối đa 8 tham số
+			- nếu muốn nhiều hơn thì có thể sử dụng Tuple lồng vào phần tử thứ 8
+			- khai báo: var person = Tuple.Create(1, "Steve", "Jobs");
+				- Tuple<int, string, string> person = new Tuple <int, string, string>(1, "Steve", "Jobs");
+				- thực thi: Console.WriteLine(person.Item2);	=> Item2 là biến có sẵn của c#
+					- Console.WriteLine(person.Rest);	=> Rest chỉ về phần tử 8 chỉ khi Tuple có đủ 8 phần tử
+					- Tule lồng: var numbers = Tuple.Create(1, 2, Tuple.Create('QUYET',"TAM") 4, 5, 6, 7, Tuple.Create(8, 9, 10, 11, 12, 13));
+					- thực thi: Console.WriteLine(person.Rest.Item1);	=> Rest chỉ dùng cho phần tử 8 và truy cập vào phần tử  của nó
+						- Console.WriteLine(person.Item2.Item1);	=> truy cập vào thuộc tính lồng của Item 2
+						-  Console.WriteLine($"First Name = { numbers.Item2.Item1}");
+		anonymous(Vô Danh):
+			- mô tả: được sử dụng với bất kỳ kiểu dữ liệu nào khác
+			- khai báo: var tenbien = new {name="quyet",age=22}
+			- thực thi: tenbien.name;
+			- khai báo: var a = new {name="quyet",age=23};
+			anonymous trong anonymous:	var a = new {name="quyet",age= new {age1=23, age2=34}};
+			array: var a = new[] {
+				new {name="quyet",age=23},
+				new {name="tam",age=22}
+				}
+			- sử dụng: console.WriteLine(a.name);
+			- anonymous với linq:
+				- class family {
+       				 public int Id { get; set;}
+       				 public string Name { get; set;}
+       				 public object Age{get;set;}
+    				}
+
+				- Ilist<family> familys = new List<family>{
+					new family(){Id=1,Name="quyet",Age=23},
+					new family(){Id=2,Name="tam",Age=22},
+					new family(){Id=3,Name="quyen",Age=25}
+				}
+				var from s in familys
+					where s.Name.Constant("quyet")
+					select new {id = s.Id, name = s.Name, age = s.Age}
+
+
+		SortedList:
+			khai báo:
+			SortedList<String, Product> a = new SortedList<String, Product>();
+            		a["sanpham1"] = new Product(){Name = "Nokia"};
+            		a["sanpham2"] = new Product(){Name = "Iphone"};
+            		a["sanpham3"] = new Product(){Name = "Ipad"};
+            		a["sanpham4"] = new Product(){Name = "Samsung"};
+			- lấy giá trị:	Product b = a["sanpham1"];	sanpham1 chính là key
+			- Hoặc Product c = a.Values[0];		có thể dùng vòng lặp để lấy toàn bộ value
+			- lấy thuộc tính: string d = c.Name;	=> khi lấy được dữ liệu đối tượng thì ta truy cập lấy thuộc tính
+			- lấy key:String  c = a.Keys[0];	=> có thể dùng foreach để lấy toàn bộ key
+			- lấy index của key:	int a = a.IndexOfKey("sanpham1");
+			- thêm key, value: a.Add("sanpham4",new Product(){Name = "Sony"});
+			- xóa phần tử:		a.Remove("sanpham1");
+			- xóa phần tử tại vị trí: a.RemoveAt(3);
+			- xóa toàn bộ phần tử: a.Clear();
+
+		Queue:	hàng đợi, thêm trước thì sẽ xử lý trước
+			khai báo: Queue<string> a = new Queue<string>();
+			a.Enqueue("ho so 1");
+			a.Enqueue("ho so 2");
+			a.Enqueue("ho so 3");
+			in giá trị:	a.Dequeue();	=> sẽ in giá trị đầu và xóa khỏi danh sách
+				a.Peek();	=> in giá trị đầu nhưng ko xóa
+			Kiểm tra phần tử có tồn tại hay không: cachoso.Contains("Ho so 1")
+			đếm số phần tử:	cachoso.Count
+
+
+Phương thức mở rộng: 
+	thêm phương thức hay property cho 1 đối tượng có sẵn mà không phải định nghĩa lại
+	bước 1: tạo class tĩnh
+	bước 2: phương thức tĩnh trong class đó có tham số đầu tiên là this kiẻudữliệu tên
+		ví dụ: public static void print(this string s,int a) 
+
+cộng các đối tượng:
+	- tạo 1 class có các trường:
+		public int x{set;get;}
+        	public int y{set;get;}
+        		public Vector(int a, int b) {
+            		x=a;
+            		y=b;
+        	}
+		public static Vector operator+(Vector c, Vector b){
+            		return new Vector(c.x+b.x,c.y+b.y);
+        	}
+		public void Info(){
+                        Console.WriteLine($"x = {this.x} y = {this.y}");
+        	}
+	- thực thi trên hàm main:
+		Vector c = new Vector(3,2);
+            	Vector b = new Vector(6,8);
+            	Vector g = c+b;
+            	g.Info();
+Indexer: như array ta có cách lấy giá trị: a[]; ta cũng có thể lấy giá trị theo kiểu này với đối tượng
+	- public int this[int i]{
+            set {
+                switch(i){
+                    case 0: x = value;
+                    break;
+                    case 1: y = value;
+                    break;
+                }
+            }
+            get {
+                switch(i){
+                    case 0: return x;
+                    case 1: return y;
+                    default: throw new Exception("Co loi");
+                }
+            }
+        }
+	- thực thi trên hàm main:
+		Vector a = new Vector(2,3);
+            Console.WriteLine(a[0]);
+Đối tượng:
+	- static: 
+		- không thể được khởi tạo và không thể được truy cập từ 1 đối tượng
+		- static  class thì các thành viên của nó phải static
+		- static class không thể được kế thừa
+		- class tĩnh truy cập thành phần tĩnh: classname.method
+		- static chỉ khởi tạo 1 lần duy nhất và tồn tại suốt quá trình chạy ứng dụng
+		- khi class là static thì contructor cũng phải là static
+	- partial:
+		partial class:
+			- giúp tạo thêm class trùng tên, và gộp vào nhau
+			- thường đc sử dụng khi muốn bổ sung cho class tự động sinh code
+			- khai báo: phạm vi truy cập + partial + class name
+				- phạm vi truy cập phải trùng với class được chia nhỏ
+				- các class đặt trùng tên đều phải có partial
+		partial method:
+			-  partial void quyet();
+			- 1 class chứa method khai báo phần đầu, và class còn lại khai báo cả hàm
+
+
+
+	khởi tạo: 
+		- thuộc tính: dùng để lưu dữ liệu: dùng tốt hơn biến: public string name {set{this.name = value} ;get{return value}}
+			- khi gắn biến cho 1 giá trị sẽ tự động thực thi hàm set, và lấy giá trị sẽ thực thi hàm get
+				- 1 thuộc tính có thể chỉ có set hoặc get
+				- nếu không có hàm get thì thuộc tính không thể lấy giá trị, và không có set thì không thể gắn giá trị
+		- thực thi:
+			- khi khởi tạo sẽ chiếm 1 vùng ô nhớ và có thể thay đổi dữ liệu: classname A = new classname();
+			- khi khởi tạo sẽ tự động gọi phương thức constructor: classname(){//code}
+			- gắn giá trị cho biến, thuộc tính: A.name = "quyet" hoặc có thể gắn giá trị gián tiếp qua phương thức
+			- sử dụng phương thức của đối tượng: A.ten_phuong_thuc(thamso);
+			- sử dụng using: nếu khởi tạo đối tượng trong khối using thì sau khi thoát ra khối đối tượng đó sẽ tự hủy
+		class lồng class:\
+		partial: giúp chia nhỏ các thuộc tính của class cùng tên, các phương thức của class này dùng đc ở class khác
+		khai báo: modifiers partial class classname{}
+	property:
+		<Đóng gói> <Lệnh bổ trợ> <kieudulieu>	tenbien = giá trị;
+	constructor:
+		 - mỗi class có thể có nhiều constructor nhưng tham số đầu vào phải khác nhau
+		<Đóng gói> className(paramater){//code}
+	kế thừa:
+		className:parentClass
+	base:
+		từ khóa base dùng để truy cập property của lớp cha từ lớp con: ví dụ: base.PropertyName; base.MethodName(); base25
+	Overloading:
+		- nghĩa là có thể khai báo nhiều phương thức cùng tên, nhưng các tham số phải khác nhau
+	override phương thức:
+		- khi parentClass và className trùng phương thức, thì override sẽ gọi phương thức của className thay vì gọi parentClass
+		- cách sử dụng:
+			phương thức trùng tên ở parentClass: 	public virtual void animalSound
+			phương thức trùng tên ở className: 	public override void animalSound()
+	abstract:
+		- tính bảo mật - ẩn các chi tiết nhất định và chỉ hiển thị các chi tiết quan trọng của một đối tượng
+		- giống lớp kế thừa, nhưng ko thể khởi tạo; và có thêm phương thức trừu tượng
+			- abstract class Animal{public abstract void animalSound();}	// method abstract ko có phần thân
+			- lớp được kế thừa: public override void animalSound(){//code}
+		- khi khởi tạo và gọi method override thì nó sẽ gọi method abstract
+	interface:
+		lợi ích:
+			- tính bảo mật - ẩn các chi tiết nhất định và chỉ hiển thị các chi tiết quan trọng của interface
+			- c# chỉ được kế thừa từ 1 lớp cơ sở, nhưng có thể sử dụng nhiều giao diên interface
+		đặc điểm:
+			- ko thể khởi tạo, chỉ đc kế thừa
+			- chỉ có thể chứa các phương thức trừu tượng
+			- lớp được kế thừa phải khai báo toàn bộ method của giao diện
+			- ko cần override, vì nó tự làm việc đó
+		interface IAnimal {void animalSound();}
+	
+Phương thức:	
+	phương thức static: có thể chạy ở bất kỳ đâu, không thuộc về 1 đối tượng nào cả
+	phương thức có tham số theo tên: sử dụng để thay đổi thứ tự của tham số
+	 	name(a:"quyet",b:"hoang");
+	phương thức có ref:	giúp tham số a truy cập cùng 1 ô nhớ
+		ví dụ: int a =5;
+			tinhtoan.binhphuong(ref);
+		public static void binhphuong(ref a){
+			a = a * a;
+			}
+	phương thức có out:	giúp tham số truy cập cùng 1 ô nhớ, nhưng tham số đầu vào không phải gắn giá trị, mà sẽ được gắn ngay trong phương thức
+
+Đọc file:	cần sử dụng đối tượng System.IO
+	string a = File.ReadAllText("text.txt");	=> đọc tất cả đoạn text của file
+	- var driver = DriveInfo.GetDrives();	=> trả về 1 array, mỗi phần tử là 1 ổ đĩa, trong phần tử là đối tượng chứa thông tin của ổ đĩa
+		- driver[0].TotalSize 		=> trả về số kb của ổ đĩa
+		- driver[0].Name		=> trả về tên ổ đĩa
+		- driver[0].TotalFreeSpace	=> trả về dung lượng còn trống của ổ đĩa
+			.......
+	- DriveInfo a = new DriveInfo("C");	=> truy cập tới ổ C và lấy thông tin của ổ
+		- a.TotalFreeSpace
+		- a.Name
+		- a.TotalSize
+	Thư muc:- Directory.CreateDirectory("ASD");		=> Directory => tạo thư mục
+		- Directory.Delete("ASD");		=> void => xóa thư mục
+		- bool a = Directory.Exists("path");		=> kiểm tra thư mục có tồn tại hay không 
+		- string[] a = Directory.GetFiles("thu_muc");	=> trả về danh sách file trong thư mục
+		- string[] a = Directory.GetDirectories("obj");	=> trả về danh sách thư mục con
+	Path: - char a = Path.DirectorySeparatorChar	=> lấy ký tự / của đường dẫn
+		- string a = Path.Combine("file","file1","text.txt")	=> trả về đường dẫn tới file: file/file1/text.txt
+		- string a = Path.ChangeExtension("file/file1","txt")	=> trả về đường dẫn file có đuôi mở rộng txt: file/file1/text.txt
+		- string a = Path.GetDirectoryName("file/file1/text.txt")	=> trả về đường dẫn folder: file/file1
+		- string a = Path.GetFileName("file/file1/text.txt")		=> trả về tên file: text.txt
+		- string a = Path.GetFullPath("file/file1/text.txt")		=> trả về đường dẫn đầy đủ: C:\data\ASP\learnASP_vscode\file\file1\text.txt
+		- string a = Path.GetRandomFileName();				=> trả về tên file ngẫu nhiên: h1dkr2jv.ytp
+		- string a = Path.GetTempFileName();				=> tạo file tạm để lưu dữ liệu tạm thời
+	File: - File.WriteAllText("1.txt","Xin chao cac ban1");			=> Tạo và ghi file đồng thời xóa nội dung cũ
+		- File.AppendAllText("1.txt","Xin chao cac ban1");		=> giữ lại nội dung cũ và ghi thêm đoạn text vào file
+		- string a = File.ReadAllText("1.txt");			=> trả về nội dung của file
+		- File.Move("1.txt","abc.txt");				=> đổi tên file 1.txt thành abc.txt
+		- File.Copy("abc.txt","abc1.txt");			=> từ file abc.txt copy ra 1 file abc1.txt có cùng nội dung
+		- File.Delete("abc1.txt");				=> xóa file abc1.txt
+	FileInfo:	=> lựa chọn thay thế đối tượng File ở trên
+		FileInfo fileInfo = new FileInfo(filePath1);
+		file.Exists						=> kiểm tra file có tồn tại hay ko
+	- FileStream:	đây là đối tượng dùng để create, read, write, appdent, và 1 số thuộc tính thao tác với file
+		- FileStream a = new FileStream("abc1.txt",FileMode.Create);	=>tạo file
+		FileStream a =new FileStream("file1.jpg",FileMode.Create,FileAccess.Write,FileShare.None);	=> tạo đối tượng là thiết lập 1 số tác vụ cho đối tượng
+            		a.Write(html,0,html.Length);	=> thực hiện thao tác với file từ đối tượng
+Attribute bổ sung:	đây là 1 nhãn dán có giá trị được gắn kèm vào các property của đối tượng. Và sau đó ta có thể truy cập vào property để lấy giá trị của nhán dán đó
+			- có 1 số attribute nhãn dán ràng buộc property
+	- bước 1: Tạo nhãn dán
+		- Tạo phạm vi sử dụng của nhán dán như nhãn dán có thể dán vào method, contrucstor, property, class,..
+		- Tạo 1 lớp kế thừa từ Attribute
+			tạo 1 biến giá trị
+			tạo 1 method để gắn giá trị vào biến
+			- ví dụ:
+				[AttributeUsage(AttributeTargets.Class|AttributeTargets.Method|AttributeTargets.Property)]
+    				class MotaAttribute : Attribute{
+       					public string thongtinchitiet {get;set;}
+       					public MotaAttribute(string _thongtinchitiet){
+            					thongtinchitiet = _thongtinchitiet;
+        				}
+    				}
+	- Bước 2: dán vào property	
+		- Đặt lệnh sau vào phía trên property của class muốn dán vào
+			- ví dụ:	class xinchao{
+						[Mota("Ten nguoi dung")]
+						public string name {get; set;}
+					}
+	- Bước 3: Truy cập vào property để lấy giá trị của nhãn dán
+		ví dụ:	User user = new User(){name= "quyet"};
+				user.GetType().GetProperties().ToList().ForEach(p=>
+					p.GetCustomAttributes(false).ToList().ForEach(a=>{
+						MotaAttribute mota =  a as MotaAttribute;
+						Console.WriteLine($"{p.Name} - {mota.Thongtinchitiet}: {p.GetValue(user)}");
+					})
+				);
+	- Các Attribute khác được gắn trên property của class:	
+		[Required(ErrorMessage="khong dc null")]	=> không cho phép null
+		[Phone(ErrorMessage="sdf")]						=> chỉ cho phép nhập chuỗi là số điện thoại
+		[EmailAddress]					=> chỉ cho phép nhập chuỗi là địa chỉ email có dạng ..@..
+		[StringLength(50,MinimumLength = 3,ErrorMessage="ádf")]		=> báo độ dài tối đa của property là 50 và nhỏ nhất là 3 
+		[Range(18,80,ErrorMessage="tu 18 den 80")]			=> pham vi gia tri tu 18 đến 80
+		- Kiểm tra các attribute lỗi hay không:
+			Bước 1: Tạo List chứa các lỗi:	List<ValidationResult> result = new List<ValidationResult>();
+			Bước 2: Khai báo đối tượng ValidationContext dùng để kiểm tra đối tượng user:	
+				ValidationContext context = new ValidationContext(user);
+			Bước 3: Kiểm tra lỗi trên các attribute của đối tượng user và lưu kết quả vào biến result, nếu có lỗi trả về false, nếu không có lỗi trả về true:	
+				bool kq = Validator.TryValidateObject(user,context,result, true);
+			Bước 4: Sau khi các lỗi được lưu vào biến List result, ta cần kiểm tra có lỗi hay không rồi mới sử dụng biến result
+				if(kq==false)
+					result.ForEach(err => Console.WriteLine($"{err.MemberNames.Firt()}: {err.ErrorMessage}"))
+
+Dependency: khi 1 class A phải phụ thuộc vào 1 class B nào đó thì class B đc gọi là dependency của class A
+	- ví dụ: ta gọi 1 method của class A, mà method, constructor đó cần dữ liệu của class B mới thực thi đc, thì class B là dependency
+	- nói dễ hiểu thì: class B trở thành tham số của class A để sử dụng, nhằm lấy chức năng nào đó trong class B
+	Cách 1:
+		- Nạp đối tượng B vào đối tượng A như 1 tham số thông qua constructor hoặc method và lưu lại như 1 property
+		- Sử dụng property chứa đối tượng B để thực hiện 1 số chức năng của đối tượng B
+	Cách 2:
+		- ở class A: khi thực hiện 1 chức năng cần sử dụng đối tượng B, thì ta chỉ việc khởi tạo đối tượng B trong class A
+		- Cách này ko nên sử dụng, vì khi cần thay đổi chức năng trong class B thì sẽ phải thay đổi cả class A
+	Cách 3: - tạo các interface của các dependency và sử dụng interface với các dependency tương ướng
+		- Lưu ý: tạo và gắn 1 đối tượng cho 1 Interface, thì interface này hoàn toàn có thể sử dụng các property, method,.. của đối tượng đó
+		- ta khởi tạo và nạp các đối tượng dependency có kiểu Interface vào đối tượng A như 1 tham số
+	Cách 4:	- như cách 3 nhưng thay vì tự khởi tạo các dependency và thêm tham số thì ta nhờ thư viện khởi tạo và injection
+		- Thêm thư viện hỗ trợ tạo dependency tự động và Injection tự động
+		- dotnet add package Microsoft.Extensions.DependencyInjection
+			- bước 1: ServiceCollection services = new ServiceCollection();		=> tạo ra list chứa các class ta cần khởi tạo và inject
+			- bước 2: services.AddSingleton<IclassC,classC1>();			=> thêm vào list các class cần khởi tạo và inject
+				- AddSingleton<>() nghĩa là đối tượng classC1 chỉ được khởi tạo 1 lần
+				- AddTransient<>() cho phép đối tượng classC1 khởi tạo nhiều lần
+				- AddScoped<>()		=> cho phép khởi tạo nhiều lần, nhưng lần khởi tạo thứ 2 trở đi sử dụng lệnh này IclassC m = provider.CreateScope().ServiceProvider.GetService<IclassC>();
+					- khi tham số của đối tượng lớn hơn 2: AddSingleton<IclassB>()p => new classB(p.GetService<IclassC>(),"xin chao")	tham số 2 thứ 2 là 1 chuỗi
+						khi sử dụng degelate thì chỉ cần 1 tham số generic
+			- bước 3: var provider = services.BuildServiceProvider();		=> chốt list và build ra đối tượng cung cấp các dịch vụ
+			- bước 4: IclassC classc = provider.GetService<IclassC>()		=> tương ứng câu lệnh IclassC classc = new classC1(); dựa trên list class đã chốt trước đó
+		- Inject dữ liệu với IOptions:	dotnet add package Microsoft.Extensions.Options
+			- giải thích: tạo 1 đối tượng để lưu và lấy dữ liệu gọi là option, và inject cho các đối tượng cần dữ liệu
+				- đối tượng lấy dữ liệu thông qua constructor và lưu lại với property
+					- option nằm ở 1 vùng khác trong List ServicesCollection
+					- đối tượng lấy dữ liệu tự tìm đến đối tượng IOptions để inject, thông qua IOptions<MyServicesOptions> options
+			- service.Configure<MyServiceOption>(p => {p.data1 = "xin chao"; p.data2 = 22});	
+				- khởi tạo đối tượng => lưu giá trị qua constructor => nằm im đợi được inject
+			- code:
+				class MyServicesOptions
+    			{
+        			public string data1 {get;set;}
+       				public int data2 {get;set;} 
+   			}
+
+    			class MyServices
+    			{
+       				public string data1 {get;set;}
+        			public int data2 {get;set;}
+        			public MyServices1 o;
+        			public MyServices(IOptions<MyServicesOptions> options,MyServices1 a){
+            				data1 = options.Value.data1;
+            				data2 = options.Value.data2;
+            				o = a;
+        		}
+			ServiceCollection services = new ServiceCollection();
+            		services.Configure<MyServicesOptions>(p => {p.data1 = "xin chao"; p.data2 = 22;});
+				- hoặc	services.Configure<MyServicesOptions>(config.Build().GetSection("data"));
+					- xem phần đọc file json ở phía dưới để biết rõ cách hoạt động
+					- key trong json phải có key trùng với tên biến
+            		services.AddSingleton<MyServices>();
+           		services.AddSingleton<MyServices1>();
+            		var provider = services.BuildServiceProvider();
+            		MyServices a = provider.GetService<MyServices>();
+            		a.getdata();
+Json:
+	Đọc file json và Lấy dữ liệu:
+		- dotnet add package Microsoft.Extensions.Configuration
+		- dotnet add package Microsoft.Extensions.Options.ConfigurationExtensions
+		- dotnet add package Microsoft.Extensions.Configuration.Json
+		- tạo file json dưới dạng object
+		- truy cập tới file và lấy dữ liệu
+			ConfigurationBuilder config = new ConfigurationBuilder();	=> tạo đối tượng giúp lấy dữ liệu
+            		config.SetBasePath(Directory.GetCurrentDirectory());		=> lấy đường dẫn thư mục tới file json
+            		config.AddJsonFile("data.json");				=> thêm file json
+            		var a = config.Build();						=> đọc file json và lưu vào biến a
+            		Console.WriteLine(a.GetSection("profile").GetSection("name").Value);	=> lấy dữ liệu file thông qua key
+	Lấy key từ chuỗi json:
+		Tạo class Customer gồm Id, Name
+		string jsonString = @"{"customerId":3,"fullName":"Quyet"}" 
+		var customer = JsonConvert.DeserializeObject<Customer>(jsonString);
+		Console.WriteLine(customer.Name);
+Biến đối tượng (class or anonymous) thành json:
+	- install package Newtonsoft.Json + using Newtonsoft.Json
+	- khởi tạo 1 đối tượng aaa kiểu class hoặc kiểu vô danh và gắn dữ liệu cho đối tượng đó
+	- string json = JsonConvert.SerializeObject(aaa);
+Generic: khi giải thuật là giống nhau nhưng kiểu dữ liệu khác nhau thì ta dùng generic:
+	- khai báo: classname<datTen_kieudulieu>	đặt biến generic cho các biến trong class hoặc method
+			mothodname<datTen_kieudulieu>
+	- thực thi: 
+		- Đối với class: Product<string> a = new Product<string>();
+		- Đối với method: set<string>();		=> ghi nhớ: class, method nào đặt generic thì khi thực thi cũng đặt kiểu dữ liệu trước tên class,method đó
+
+
+Biến đổi json thành class đã cho trước: sử dụng để thêm dữ liệu vào 1 đối tượng
+	- tạo trước 1 class profile gồm các dữ liệu: public string name {get; set;}
+						public int age {get;set;}
+	- tạo 1 string định dạng json: string a = "{'name':'hoang van quyet','age':22}" 
+		- tạo chuỗi string có thể gặp 1 số lỗi, hãy thêm @ ở trước chuỗi
+	- convert chuỗi json vào 1 đối tượng( class profile đã tạo trước) và có dữ liệu json là a: var profile1 = JsonConvert.DeserializeObject<Profile>(a);
+	- sử dụng biến profile1 để in dữ liệu json ra: console.WriteLine(profile1.name);
+Tạo thư viện:
+	- tạo folder MyLib -> cd folder -> dotnet new classlib -> thêm phương thức
+	- từ project -> thêm thông tin vào file .csproj -> PropertyGroup -> <Package>MyLib</Package>
+									-> <Version>1.0.0</Version>
+									-> <Authors>quyet</Authors>
+	- từ Mylib: dotnet build
+		- nếu lỗi thì xóa version và authors, xem lại class, method đã được public static chưa, chú ý cú pháp của propertyGroup
+	- lấy path: pwd
+	- từ project: dotnet add path: project reference path: Mylib
+
+		
+Namespace:
+	- namespace lồng nhau:
+		- trong 1 namespace thường chứa class, struct, interface,.. thì có thể chứa namespace
+	- sử dụng: using namespace
+		- có thể sử dụng tên thay thế cho namespace: using xyz = namespace;
+		- có thể sử dụng cả class: using static namespace.classname;
+			ví dụ: using System.Console;		=> thì lệnh hệ thống chúng ta có thể rút gon lại: WriteLine();
+		- sử dụng với namespace lồng khi có 1 namespace nằm trong 1 namespace khác: using namespace.namespace;
+
+
+
+GetType: Đặc tính chung của kiểu dữ liệu:
+	Type t1 = typeof(int|string|...);		=> đối tượng Type giúp lấy thông tin của kiểu dữ liệu //t1 = System.int32
+		- hoặc int a = 1; Type t1 = a.GetType();
+		GetType():	Type name = t1.GetType();	=> lấy tên của kiểu dữ liệu
+	- Ta có các phương thức của đối tượng Type để lấy thông tin của kiểu dữ liệu đó:
+		- Lưu ý Cực kỳ quan trong: trong kiểu dữ liệu có thuộc tính(properties), phương thức (method), constructor,.. chúng ta cần phải phân biệt
+		GetPropreties:		t1.GetProperties().ToList().ForEach(//lamda);			=> trả về danh sách Thuộc tính của kiểu dữ liệu
+			- lấy giá trị thuộc tính: item.Name và item.GetValue(tenbien)
+		GetFields:		t1.GetFields().ToList().ForEach(//lamda);			=> trả về các trường dữ liệu
+		GetMethods:		t1.GetMethods().ToList().ForEach(//lamda);			=> trả về các phương thức của kiểu dữ liệu
+Lamda: 
+	- Mô tả được sử dụng cùng với delegate, bình thường chúng ta phải viết 1 phương thức và gắn vào delegate. Nhưng chúng ta có thể gắn trực tiếp phương thức vào delegate
+	- khai báo: 
+		- phương thức:
+			- cách 1: action<kieudulieu> a = (thamso) => bieu_thuc;
+			- cách 2: Func<kieudulieu> a = (thamso) => {cac_bieu_thuc;
+							return ;
+						}
+			- cách 3: chúng ta có thể rút gọn kiểu dữ liệu của biểu thức lamda do đã được xác định ở delegate: action<kieudulieu> a = b => bieu_thuc;
+
+Bất Đồng Bộ:
+
+	Synchronous: là đồng bộ code, code sẽ chạy theo thứ tự tự trên xuống
+	Asynchronous: là bất đồng bộ, code có các luồng chạy song song
+	Khai báo phương thức bất đồng bộ:
+		public async Task<Kieutrave> methodName(){
+			var kieutrave = await Phương Thước bất đồng bộ;
+			return kieutrave;
+		}
+	Sử dụng phương thức bất đồng bộ:
+		Cách 1:
+			public async Task method(){
+				var kieutrave = await methodName;	=> sử dụng phương thức task và trả về kiểu trả về
+			}
+			
+		Thread.Sleep(1000); => Thời gian ngủ 1s
+	Đối tượng Task:
+		khai báo:
+			Task a = new Task(action);	=> đối tượng giúp tạo ra bất đồng bộ, truyền vào 1 lamda ko có tham số
+				ví dụ: Task a = new Task(()=>{
+            				Console.WriteLine("Begin Thread");
+            				Thread.Sleep(10000);
+            				Console.WriteLine("End Thread");
+            			});
+       	 			
+			Task b = new Task(action<object>,object)	=> cách 2 truyền vào "1 lamda có 1 tham số object" và object
+				Ví dụ: Task b = new Task((a)=>{
+            				Console.WriteLine("Begin Thread 2");
+            				Thread.Sleep(7000);
+            				Console.WriteLine("End Thread 2");
+            			},"df");						=> tham số thức 2 là giá trị truyền cho tham số của lamda
+		thực thi:		
+			a.Start();	=> bắt đầu chạy luồng 
+			b.Start();
+			a.Wait();	=> đợi luồng chạy xong thì các luồng khác mới đc phép chạy
+			await a;	=> giống Wait(), nhưng sẽ turn ngay trong method, sử dụng chung với async
+			
+	Đưa bất đồng bộ cơ bản vào 1 method: ta sẽ có thêm 2 keyword: async và await
+		thêm async vào trước kiểu dữ liệu của phương thước:  public static async void  print(){await taskName}
+		await taskName hoặc a.Wait(): các luồng chạy song song, nhưng thêm await vào 1 luồng thì luồng đó sẽ phải hoàn thành thì các luồng khác mới đc chạy
+			nhưng await sẽ tự động return ngay kiểu task, còn Wait() thì ko return 
+			ví dụ:
+				public static Task task1(){
+				 Task b = new Task((object t)=>{
+                			string c = (string)t;
+                			Console.WriteLine("Bất đồng bộ");
+            			},"B");
+				a.Start();		=> bắt đầu 1 thread 
+				a.Wait();		=> đợi thread b kết thúc thì mới đc chạy lệnh bên dưới
+				Console.WriteLine("sdf");
+				return b;
+			}
+	Tạo Phương thức bất đồng bộ: 
+		- Lưu ý: khi thread chính kết thúc thì các thread khác không thể chạy  nên cần phải có wait ở thread chính Task.WaitAll(task2(),task1());
+			khi 2 thread đều có wait (a.Wait();) thì sẽ phá vỡ việc chạy song song của các thread nên c# đưa ra async/await:
+			static async Task task1(){
+				 Task b = new Task((object t)=>{
+                			string c = (string)t;
+                			for(int i = 0; i < 10;i++){
+                    				Thread.Sleep(1000);
+                    				Console.WriteLine($"{c}: {i}");
+                			}
+            			},"B");
+				a.Start();		=> bắt đầu 1 thread 
+				await b;		=> đợi thread b kết thúc thì mới đc chạy lệnh bên dưới
+				Console.WriteLine("sdf");
+			}
+		lưu ý: khi phương thức có async Task thì mới có thể sử dụng await
+			có thể áp dụng với hàm main 
+			tư duy theo kiểu dữ liệu thì ta có 2 kiểu: Task và async Task
+	Task có giá trị trả về:
+		Task<string> a = new Task<strign>(Func);	=> đối tượng giúp tạo ra bất đồng bộ, truyền vào 1 lamda ko có tham số có return string
+		Task<string> b = new Task<string>(Func<object>,object)	=> cách 2 truyền vào "1 lamda có 1 tham số object và có return string" và object
+			để lấy giá trị trả về của Task: a.Result
+Lập trình hướng sự kiện:
+	- code khi ctr + c: Console.CancelKeyPress += (sender,e) => {Console.WriteLine("Thoat Thanh Cong");};
+	- tạo 1 biến delegate đóng vai trò trung gian giữa 2 đối tượng: dùng để nhận dữ liệu từ đối tượng 1 và gửi dữ liệu cho đối tượng 2
+	- tạo 2 đối tượng:
+		- đối tượng gửi sự kiện: người dùng tạo ra 1 sự kiện và được lưu lại bởi delegate của đối tượng
+			- tạo ra biến delegate để nhận gửi dữ liệu
+			- tạo ra phương thức lưu dữ liệu delegate
+			- phương thức tạo ra sự kiện
+		- đói tượng nhận sự kiện: dùng dữ liệu delegate từ đối tượng 1 để làm 1 việc gì đó mà người dùng yêu cầu
+			- truy cập vào biến delegate để dùng dữ liệu
+			- tạo ra phương thức giải quyết yêu cầu của người dùng
+	- nếu thêm đối tượng nhận sự kiện thì cần thêm từ khóa event trước phương thức delegate, và phương thức này ko thể được gắn mà chỉ được thêm sự kiện +=
+	- Hướng sự kiện với eventHanbler: Thay vì tự tạo biến delegate ta dùng delegate của hệ thống: delegate void (object? sender, EventArgs args)
+		- trong đó tham số object là đối tượng gửi đi sự kiện
+		- tham số EventAgrs là đối tượng của hệ thống: ta tạo 1 đối tượng dùng chứa dữ liệu kế thừa từ EventAgrs thì mới có thể đưa vào làm tham số
+	có 3 đối tượng và 1 delegate:
+		- 1 đối tượng dùng để gửi dữ liệu
+		- 1 đối tượng dùng để lưu trữ dữ liệu
+		- 1 đối tượng dùng để xử lý dữ liệu và trả về kết quả mong muốn
+		- 1 delegate EventHandler của hệ thống giúp liên kết và chuyển dữ liệu từ 3 đối tượng trên
+	- Các bước thực hiện:
+		- bước 1: Tạo ra đối tượng nhập liệu từ người dùng
+		- bước 2: Tạo đối tượng lưu trữ kế thừa từ lớp EventArgs gồm biến lưu trữ, constructor để lưu dữ liệu vào biến
+		- bước 3: Trong đối tượng nhập input Tạo delegate EventHandler từ hệ thống, và thực thi để lưu dữ liệu vào đối tượng lưu trữ
+		- bước 4: Tạo đối tượng xử lý: gồm phương thức xử lý và phương thức gắn cho delegate
+			- chú ý: phương thức xử lý phải có tham số giống với delegate EventHandler void (object sender, EventArgs e)
+				- ta cần chuyển đối tượng e thành đối tượng lưu dữ liệu để sử dụng vậy nên trước đó ta cần phải kế thừa 
+			- đối tượng 2: tạo đối tượng 2 để lưu dữ liệu cần thiết từ người dùng, đồng thời kế thừa từ đối tượng EventArgs, do delegate EventHandler của hệ thống dùng đối tượng EventArgs làm tham số nên kế thừa sẽ giúp cho đối tượng dữ liệu tự tạo có thể trở thành tham số
+			- đối tượng 1: tạo phương thức nhập input đồng thời thực thi delegate có tham số là đối tượng dữ liệu 2 đồng thời lưu dữ liệu vào đối tượng 2
+			- đói tượng 3: tạo phương thức xử lý dữ liệu có tham số là đối tượng dữ liệu 2, tạo phương thức gắn hàm xử lý vào delegate
+			- delegate nằm trong đối tượng 1 thực thi lệnh và gửi dữ liệu qua tham số cho đối tượng 2,
+		-code tham khảo: 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace learnASP_vscode
+{  
+    class Data:EventArgs {
+        public int SoNguyen{set;get;}
+        public Data(int x) => SoNguyen = x; 
+    } 
+    class Input
+        {
+            public event EventHandler LuuTru;
+            public void UserInput(){
+                Console.Write("Nhap so nguyen: ");
+                int SoNguyen = Convert.ToInt16(Console.ReadLine());
+                Console.WriteLine("Nhap thanh cong");
+                LuuTru?.Invoke(this,new Data(SoNguyen));
+            }
+        }
+        class BinhPhuong {
+            public void RegisterEvent(Input i){
+                i.LuuTru += XuLy;
+            }
+            public void XuLy(Object sender, EventArgs e){
+                Data d = (Data)e;
+                Console.WriteLine($"Binh phuong cua {d.SoNguyen} la : {d.SoNguyen*d.SoNguyen}");
+            }
+        }
+
+        class canbac2 {
+            public void RegisterEvent(Input i){
+                i.LuuTru += XuLy;
+            }
+            public void XuLy(Object sender, EventArgs e){
+                Data d = (Data)e;
+                Console.WriteLine($"Can bac 2 cua {d.SoNguyen} la : {Math.Sqrt(d.SoNguyen)}");
+            }
+        }
+    class Program
+    {
+        
+        
+        static void Main(string[] args)
+        {      
+            Input nhap = new Input();
+            BinhPhuong b = new BinhPhuong();
+            canbac2 c = new canbac2();
+            b.RegisterEvent(nhap);
+            c.RegisterEvent(nhap);
+            nhap.UserInput();
+        }
+    }
+}
+
+			 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+khung xương của c#:
+	namespace
+		class
+			function
+			variables
+			constructor
+- namespace:		
+		- sử dụng class của namespace khác:
+			- cách 1: using vidu1
+			- cách 2: thêm namespace.class
+- params:
+	- 1 array ko thể trở thành 1 đối số nếu ko có params trong hàm nhận đối số
+	- ví dụ public int sum (params int[] arr){}
+- class.name
+	thì class là 1 contrucstor còn name là 1 phương thức trong contructor đã được khai báo
+	nếu không phải new class thì class đó được sử dụng static
+- constructor của hệ thống dưới dạng static:
+	- console
+		- Write("hello world");		-> in ra chữ "hello world" nhưng không xuống dòng
+		- WriteLine("HelloWorld") 	-> in ra chữ "hello world" đồng thời xuống dòng
+		- ReadKey();			-> ngưng chương trình lại
+- Làm việc với method:
+	Tham số:
+		void static int tong(int a, int b = 10){}
+		- chỉ chuyền vào 1 tham số a thì b mặc định là 10
+		- thay đổi thứ tự nhập tham số:
+			tong(b:20, a:10);
+		- biến a sau khi truyền vào làm tham số thì giá trị của biến ko thay đổi
+		- nếu muốn phương thức tác độn vào làm biến a thay đổi thì đặt từ khóa ref trước biến: 
+			var a = 10;
+			static int tong(ref a)
+			tong(ref a)
+			và biến sau phương thức có thể thay đổi
+		- từ khóa out giống ref, nhưng out không cần phải gắn giá trị trước:
+			var a;
+			- static int tong(out a)
+			 tong(out a)
+			 và biến sau phương thức có thể thay đổi
+				
+		
+
+
+- generics:
+	nhu cầu sử dụng: khi chưa xác định rõ kiểu dữ liệu cho tham số của class hoặc hàm
+	khai báo trên class: class name <T,key>{public T name, key age; }	=> trong đó T,key chưa xác định. nó chỉ xác định ở phần thực thi
+	thực thi: name<string,int> quyet = new name("quyet",23);
+	khai báo trên hàm: public void name<T>(){}	
+	class:
+	
+		class<T>
+- Kiểu dữ liệu:
+	
+
+	- String:
+		- string a = "\quyet\ntam\tquyen\nhoang\rqu\aan\b";		
+			- ký tự đặc biệt: \
+
+					\n	dùng để xuống dòng
+					\t	dùng như phím tab
+					\r	cắt chuỗi và chỉ lấy các ký tự phía sau \r
+			- tắt ký tự đặc biệt:	sử dụng @ trước chuỗi => ví dụ @"quyet\n"
+			- sử dụng dấu " trong chuỗi: \"
+			- sử dụng @ và \ để đưa chuỗi xuống dòng: @"quyet\
+								tam	"
+
+		
+
+	- Enum:
+		- khai báo:
+			enum myEnum
+            		{
+                		quyet,	//0
+				tam,	//1
+				quyen	//2
+            		}
+
+		- sử dụng:			
+			- console.WriteLine(myEnum.quyet);	//quyet	=> kiểu enum nhưng có thể convert sang string
+			- console.WriteLine((int)myEnum.quyet);	//5	=> trả về index	kiểu int
+			- console.WriteLine((myEnum)2);		//quyen	=> từ index trả về enum
+			- index tự động tăng
+			- có thể sửa index ở phần khai báo: ví dụ tam = 4 thì các biến sau index sẽ biến đổi thành 5,6..
+			- gắn biến Nullable cho biến không Nullable:	int j = i??0;
+			- biến nullable có thể không cần gắn giá trị ở lớp class
+	
+	- ValuleTuple (bản nâng cấp xịn xò):	Install package System.ValueTuple
+		- Mô tả: khắc phục điểm yếu của Tuple: về giới hạn phần tử, code ngắn gọn hơn. nhưng tham số truyền vào ít nhất là 2 phần tử
+			- có thể gắn tên cho các phần tử thay vì Item1, 2,3
+		- khai báo: var person = (1, "Bill", "Gates");
+			- ValueTuple<int, string, string> person = (1, "Bill", "Gates");
+			- (int, string, string) person = (1, "Bill", "Gates");
+			- var numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14); 
+			- var person = (Id:1, FirstName:"Bill", LastName: "Gates");
+			- (int Id, string FirstName, string LastName) person = (1, "Bill", "Gates");
+		- thực thi: 
+			Console.WriteLine(person.Id);
+
+	- delegate:
+		- Mô tả: trong c# không thể dùng hàm để làm tham số, nên delegate giải quyết vấn đề này
+			- khởi tạo biến delegate
+			- gắn hàm muốn làm tham số vào biến delegate
+				- có thể gắn thêm hàm vào biến bằng toán tử cộng, sau khi thực thi sẽ chạy các hàm cùng 1 lúc
+				- biến delegate và hàm phải có cùng kiểu và cùng type tham số
+			- sử dụng biến delegate đã được gắn như 1 tham số
+		- khai báo:	public delegate void MyDelegate(string msg); => đặt ở trong class hoặc namespace
+		- Gắn phương thức:
+			cách 1: MyDelegate del = null;
+				del = method;
+			cách 2: MyDelegate del = new MyDelegate(MethodA);
+			cách 3: MyDelegate del = (string msg) =>  Console.WriteLine(msg);	đây là biểu thức lamda
+			cách 4: MyDelegate del = null;
+				del += mothodA;
+				del +=methodB;
+			- trong đó:	MethodA là hàm sẽ trở thành tham số
+		- thực thi:
+			- cách 1: del("Hello World!");
+
+			- cách 2: del.Invoke("Hello world")
+			- cách 3: kiểm tra nếu khác null mới thực thi: del?.Invoke("Hello");
+	- Func delegate:
+		- Mô tả: đây là 1 delegate của system đã được định nghĩa có kiểu trả về 
+			- có 0 -> 16 tham số đầu vào và 1 tham số đầu ra
+			- 
+		- Khai báo: hệ thống c# đã tự khai báo nên chúng ta không cần khai báo
+		- gắn phương thức: Func <int, int, int> add = sum;	trong đó int thứ 3 là kiểu trả về
+		- thực thi: 	- cách 1:	int result = add(10, 10);
+        					Console.WriteLine(result);
+				- cách 2:	add.Invoke(10,20);
+				- cách 3 kiểm tra khác null mới thực thi: add?.Invoke(10,20);
+		- sử dụng với ẩn danh: 
+				Func<int> getRandomNumber = delegate()
+                            {
+                                Random rnd = new Random();
+                                return rnd.Next(1, 100);
+                            };\
+	- Action delegate:	là void và không có tham số đầu ra
+		- Mô tả: đây là 1 delegate của system đã được định nghĩa kiểu void
+			- có 0 -> 16 tham số đầu vào và 1 tham số đầu ra
+			- 
+		- Khai báo: hệ thống c# đã tự khai báo nên chúng ta không cần khai báo
+		- gắn phương thức:
+			cách 1: Func <int, int, int> tenbien = methodA;	trong đó int lần lượt là các tham số đầu vào
+			cách 2 sử dụng khi method là ẩn danh:
+				Func<int> getRandomNumber = delegate()
+                            {
+                                Random rnd = new Random();
+                                return rnd.Next(1, 100);
+                            };\
+		- thực thi: 	tenbien(10, 10,90);
+				
+	- Predicate delegate:	tương tự với Func delegate nhưng kiểu trả về của nó là boolean và không có tham số đầu ra
+	- Anonymous Method: 
+		mô tả: giống với các delegate khác nhưng hàm trở thành tham số  là 1 hàm ẩn danh(hàm không có tên)
+		Print print = delegate(int val) { 
+        Console.WriteLine("Inside Anonymous method. Value: {0}", val); 
+    };
+
+    print(100);
+	- struct:
+		- struct family
+        	{
+           		public string name;
+            		public int age;
+            		public family(string x,int y){
+                		this.name=x;
+                		this.age=y;
+            		}
+       		 }
+		-sử dụng:	family a = new family("quyet",23);
+				Console.Write(a.name);
+
+	- kiểm tra kiểu dữ liệu: Type a = tenbien.GetType();
+				hoặc console.writeLine(tenbien.GetType());
+
+	- Ép kiểu:
+		cách 1:
+			- 
+			a.toString
+		- String -> int:
+			- int a = Convert.ToInt32(myString);
+			- int a = int.Parse(myString);
+		- String -> DateTime:
+			- DateTime date = Convert.ToDateTime(myString);		-> myString phải dưới dạng mm/dd/yyyy và trả về kiểu string
+		- cách 3: TryParse
+			string myString = "123";
+           		 int a;
+            		bool b = int.TryParse(myString, out a);
+            		Console.WriteLine(String.Format("{0} {1}",a+1,b));
+            		Console.ReadKey();
+	
+
+
+- Các câu lệnh theo 1 cấu trúc:
+	+ if else: ->  if(điều kiện){ //code1} else {//code2}
+	+ Toán tử 3 ngôi: int result = a > b ? 1:2 nếu đúng thì chọn số 1 sai thì số 2
+	+ switch:
+                ->  int a = 1;
+                    switch(a){
+                        case 1: console.log("day la so 1");
+                                break;
+                        case 2: console.log(" day la so 2");
+                            break;
+                    }
+	+ for
+		- for(int i = 0; i<myArray.length; i++){Console.WriteLine(i)}
+	+ foreach:		-> sử dụng trong mảng và array
+		- foreach (int value in myArray){Console.WriteLine(value)}		-> lấy tất cả giá trị trong mảng
+		- đối với chuỗi thì trả về ASCI của từng ký tự
+	+ while:	int i = 100;
+           		while (i >0){Console.WriteLine(i);i--;}
+	+ do/ while:	int i = 100;do{Console.WriteLine(i);i--;} while (i > 0);
+	+ break/ continue trong vòng lặp:
+		- break: nếu gặp lệnh này sẽ thoát vòng lặp 
+		- continue: nếu gặp lệnh này sẽ bỏ các lệnh phía dưới và thực thi vòng lặp kế tiếp
+
+- Kế thừa:
+	- khai báo các thành viên ở lớp B
+	- khai báo class A:B thì sẽ sử dụng được các thành viên của lớp B.
+	- chỉnh sửa các thành viên của lớp B từ class A: public new void cat(){}
+	- gọi các thành viên của lớp B từ lớp A: base.cat();
+	- gọi các thành viên lớp B đc thay đổi ở lớp A: cat();
+- generic:
+	- giúp tham số có thể nhận kiểu dữ liệu bất kỳ
+	- ví dụ: public void swap<T>(T a, T b, T c){}
+		- 
+			ví dụ:	swap<Doule>(23,123,523)
+- lớp Interface:
+	- cách sửa dụng: 
+		- bỏ từ khóa class, sử dụng từ khóa interface, tên class bắt đầu bằng chữ I ví dụ: interface Ihinhhoc{}
+	- tác dụng: không thể sử dụng làm đối tượng mà chỉ để làm base để đc kế thừa
+	- phương thức Interface:
+		- cách sử dụng: 
+			- sử dụng giống bình thường nhưng ko có thân phương thức: ví dụ: public double chuvi();
+			- phải đc định nghĩa lại tất cả phương thức từ lớp con:
+		- tác dụng: không thể khai báo trong lớp cha, chỉ được định nghĩa lại từ lớp con.
+
+
+- Xử lý ngoại lệ:
+	- Ngoại lệ của system: khi chúng ta  chạy chương trình, nếu người dùng thao tác hoặc code chạy dẫn đến lỗi thì sẽ chạy đến systemException
+		- systemException: là nơi xử lý ngoại lệ của hệ thống
+	- ngoại lệ của app: nếu chúng ta không muốn nó chạy đến SystemException thì chúng ta sẽ phải sử lý exception này
+	khai báo:
+		try {//code} catch(Exception ex) {//code} finally {//code}
+		- try là khối lệnh xử lý có thể gặp lỗi do người dùng thao tác, try bắt buộc phải đi cùng catch hoặc finally hoặc cả 2
+		- catch là khối lệnh sẽ được thực thi khi chương trình bị lỗi
+			- 1 try có thể có nhiều catch
+				- các catch phải có tham số các nhau
+				- catch không có tham số và catch (Exception ex) luôn luôn là catch đứng cuối cùng
+					- tức là sau 2 catch này không được có catch nào khác
+		- finally là khối lệnh luôn luôn được thực thi dù chương trình có lỗi hoặc không có lỗi
+		- Exception là tham số giúp kiểm tra chi tiết lỗi và còn nhiều loại tham số khác
+			- NullReferenceException ,InvalidCastException , DivideByZeroException , InvalidOperationException , FormatException  
+	- throw:
+		- mô tả: đây là 1 biến object lưu số dòng mà nó đang được thực thi:
+			- at Program.Method2() in d:\Windows\Temp\a23cqsxm.0.cs:line 40	=> giúp nhận biết dòng lỗi trong code
+		- Sử dụng: 
+			- throw
+				=> đặt từ khóa throw vào hàm mà muốn thông báo lỗi
+				=> nhưng lệnh thực thi hàm phải trong khối try
+			- throw new InvalidStudentNameException(std.StudentName);
+				hiện thông báo lỗi kèm theo giá trị của biến
+			
+
+
+
+
+
+Đọc html web: - khi ta truy cập 1 website thì đã gửi đi 1 request đến server, và sau đó server trả về 1 response
+	Cách 1: - khởi tạo phương thức: async Task<string> Gethtml(string url){
+		- khởi tạo đối tượng: HttpClient httpClient = new HttpsClient
+			- HttpResponseMessage response = await httpsClient.GetAsync(url) gửi request và nhận response
+				- chú ý đây là lệnh bất đồng bộ và cần dùng khối try catch để đảm bảo kiểm soát lỗi, và async Task => await
+				- string html = await response.Content.ReadAsStringAsync();	đọc và trả về html, json của response
+				- byte[] html = await response.Content.ReadAsByteArrayAsync();	=> đọc và trả về byte của web
+					- thường sử dụng để lấy bytes của bức ảnh .png, .jpg
+					- trong hàm main: File.WriteAllBytes("sdf.png",html);
+						- giúp tự tạo file và lưu mảng bytes vào file để tạo 1 bức ảnh
+					- hoặc FileStream a = new FileStream("file1.jpg",FileMode.Create,FileAccess.Write,FileShare.None);
+           					 a.Write(html,0,html.Length);
+				- response.Headers	đọc và trả về headers của response dưới dạng list
+			- httpsClient.DefaultRequestHeaders.Add("User-Agent","Mozilla/5.0");	lưu thông tin Request chứa header vào đối tượng httpClient, có 1 số dạng request headers nữa tự tìm hiểu
+	- Cách 2:
+		- Khởi tạo HttpClient, HttpRequestMessage, HttpResponseMessage,
+			- HttptClient thực hiện thao tác gửi từ request đến server và trả về response
+				HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+			- request lưu thông tin header, content, uri, method get-post
+				httpRequestMessage.Headers.Add("User-agent","Mozilla/5.0");
+				httpRequestMessage.RequestUri = new Uri("http://xuanthulab.net");
+				httpRequestMessage.Method = HttpMethod.Get;
+					httpRequestMessage.Method = HttpMethod.Post; 		=> gửi dữ liệu
+						Gửi dữ liệu json lên sv: string data = @"{""key1"":""value1"",""key2"":""value2""}"
+							- httpRequestMessage.Content = new StringContent(data,Encoding.UTF-8,"aplication/json")
+						Gửi dữ liệu Form lên sv: var a = new List<KeyValuePair<string, string>>(){
+                							new KeyValuePair<string, string>("key1","value1"),
+                							new KeyValuePair<string, string>("key2","value2"),
+                							new KeyValuePair<string, string>("key2","value2-1")
+            							};		
+							- httpRequestMessage.Content = new FormUrlEncodedContent(a);
+						Gửi nhiều dữ liệu file, form lên sv:
+							- Tạo đối tượng lưu trữ dữ liệu: var data = new MultipartFormDataContent();
+								- Đưa file vào data:  	Stream stream = File.OpenRead("abc1.txt");
+            										var streamcontent = new StreamContent(stream);
+           										data.Add(streamcontent,"filename","originfile");
+								- Đưa form vào data: 	data.Add(new StringContent("noi dung 1"),"key1");
+								- có thể thêm nhiều file và form vào data
+			Method Post:
+				CustomerRegisterInput myObject = new CustomerRegisterInput(){
+            				PhoneNumber = "0123456710",
+            				FullName = "Hoàng Văn Tâm",
+            				Password = "0123456710"
+        			};
+				JsonContent content = JsonContent.Create(myObject);
+				var response = await client.PostAsync(url,content);
+			- response lấy thông tin từ server gồm, header, content, ... 
+				- string a = await httpResponseMessage.Content.ReadAsStringAsync() ép qua kiểu string để đọc
+
+		- Thêm cookie: 
+			- client gửi request và nhận response, bên cạnh đó client nhận thêm handler mà handler lại chứa cookie mà cookie lại chứa dữ liệu
+				- ta sẽ tạo đối tượng cookie chứa dữ liệu => thêm cookie vào handler => thêm handler vào client
+					- tạo cookie: cookieContainer = new CookieContainer();	=> đây là
+						cookieContainer.Add(new Uri(url),new Cookie("Name","Value"));
+					- Tạo handler vào thêm cookie vào handler:
+						- SocketsHttpHandler handler = new handler();
+						- handler.CookieContainer= cookieContainer;
+						- handler.UseCookies = true;
+					- Sử dụng: cookieContainer.GetCookies(new Uri(url)).ToList().ForEach(p=>Console.WriteLine(p));
+			- có thể sử dụng nhiều handler như dependency tương tác với request để thực hiện các tác vụ khác nhau như, thay đổi url, chặn truy cập
+				- khi request đã chứa các thông tin cần thiết để chuẩn bị chuyển đi, thì các handler này tương tác với request và chỉnh sửa request
+					- ta tạo ra 1 class kế thừa từ delegatingHandler:
+						public class ChangeUri:DelegatingHandler{
+        						public ChangeUri(HttpMessageHandler inner):base(inner){
+        						}
+        						protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,CancellationToken cancellationToken){
+            							string url = request.RequestUri.Host.ToLower();
+            								Console.WriteLine(url);
+            								if(url.Contains("google.com")){
+                								request.RequestUri= new Uri("https://postman-echo.com/post");
+            								}
+            								return await base.SendAsync(request, cancellationToken);
+        						}
+    						}
+	- từ hàm main ta chạy phương thức để lấy chuỗi html
+		Luu y:	cách 1: Task<byte[]> a = Gethtml("http://......");
+			cách 2: byte[] a = await Gethtml("http://....")
+- Tao server: trước tiên ta tạo đối tượng lắng nghe: khi ai đó gửi yêu cầu đối tượng này sẽ tiếp nhận thông tin và gửi về sv
+	- cấu hình đối tượng: HttpListener server = new HttpListener();
+		server.Prefixes.Add("http://*:8080/");	=> * là tiếp nhận mọi ip của client
+		server.Start();				=> sv bắt đầu chạy và lắng nghe bất cứ client nào gửi yêu cầu
+		var context = await server.GetContextAsync();	=> sv lấy thông tin request từ client
+			- cấu hình response:	khi lắng nghe và đã nhận request, thì ta sẽ cấu hình response và trả về cho người dùng
+				context.Response.Headers.Add("content-type","text/html");	=> loại response gửi tới client
+					- các loại headers:	"text/html", "image/png", "application/json","video/mp4",...
+						nếu chỉ ghi: "mp4" thay vì "video/mp4" thì nó sẽ được tải xuống máy tính
+					var bytes = Encoding.UTF8.GetBytes("<h1>hello world</h1>");	=> nội dung response dưới dạng bytes
+					await context.Response.OutputStream.WriteAsync(bytes,0,bytes.Length);	=> gửi tới client
+				- Đối với response là "image/png":
+					- kiểm tra đuôi: context.Request.Url.AbsolutePath
+					- var img = await File.ReadAllBytesAsync("sdf.jpg");
+                    				await context.Response.OutputStream.WriteAsync(img);
+				- Đối với response là application/json:
+					- var product = new {
+                       				 name = "Iphone 13",
+                        			origin = "Apple"
+                    			};
+                    			string json = JsonConvert.SerializeObject(product);
+                    			context.Response.Headers.Add("content-type","application/json");
+                    			await context.Response.OutputStream.WriteAsync(Encoding.UTF8.GetBytes(json));
+                       			 context.Response.OutputStream.Close();
+				
+Model cơ bản: dotnet add package System.Data.SqlClient
+	Kết nối sql	
+		SqlConnection connection = new SqlConnection("server=localhost;database=manager;user=sa;password=quyet1702");
+			- connection.State				=> kiểm tra trạng thái kết nối
+			- connection.Open(); connection.Close()		=> đóng mở kết nối
+			- Dispose();					=> hủy đối tượng
+			- Lưu ý: cần đóng connection.Close khi thực hiện 1 câu truy vấn với sqlCommand để tránh lỗi phát sinh
+	Truy vấn lấy dữ liệu: Cấu hình 1 câu truy vấn rồi execute	
+			using System.Data.Common;
+			DbCommand command = new SqlCommand();
+			hoặc DbCommand command = connection.CreateCommand();		=> cách này ko cần set command.Connection
+				command.Connection = connection;		=> kết nối truy vấn
+				query thường:
+            				- command.CommandText = "select * from profile";	=> câu truy vấn
+				query kiểu gắn tham số:
+					- tạo biến trong query @Id: command.CommandText = "select * from profile where Id = @Id";
+					- var parameter = new SqlParameter("@Id",2);	=> tham số lần lượt là tên biết và giá trị gắn
+					- command.Parameters.Add(parameter);		=> gắn vào cho command
+					- Đổi giá trị cho biến: parameter.Value = 5;
+				query kiểu Stored Procedure:
+					- tạo 1 procedure trên sqlsv có tham số là @id 
+						CREATE PROCEDURE findWithId(@id INT)
+							as
+							BEGIN
+								SELECT * FROM profile WHERE Id = @id
+							END
+					- code: command.CommandText = "findWithId"
+						command.CommandType = CommandType.StoredProcedure
+				thực hiện truy vấn:
+            				var data = command.ExecuteReader();		=> thực hiện truy vấn trả về nhiều dòng
+						hoặc var data = command.ExecuteScalar()	=> thực hiện truy vấn trả về giá trị của dòng 0, cột 0
+						hoặc var data = command.command.ExecuteNonQuery() => trả về số dòng bị tác động như số dòng thêm, xóa, sửa, undate 
+
+				
+				
+			
+        Đọc dữ liệu:		=> dữ liệu lấy được có kiểu giống với trong database			
+		
+		data.GetValue(0) = data[0] = data["Id"]		=> đọc trường dữ liệu theo index hoặc theo tên
+					data.GetInt32(0)	=> chỉ có thể lấy đc khi dữ liệu là kiểu In
+		ví dụ:
+			if(data.HasRows)			=> kiểm tra có dữ liệu hay ko
+				while(data.Read()){		=> data.Read() trả về true nếu đọc thành công và chuyển đến phần tử tiếp theo của dữ liệu
+                			Console.WriteLine($"{data["Id"]}--{data["Name"]}");
+            			}
+		có thể gắn cho DatTable:
+			DataTable myTable = new DataTable();
+			myTable.Load(data);
+			
+	Kiểu dữ liệu DataTable:
+		DataTable table = new DataTable();
+		table.Columns.Add("Id");	=> Tạo trường Id
+		table.Columns.Add("Name");	=> tạo trường name
+		////// Them du lieu
+		table.Rows.Add("1,"quyet");	=> thêm dữ liệu cho row
+			- table.Rows.Add()["Id"] = 2;				=> thêm dữ liệu cách 2
+			- table.Rows.Add()["Name"] = "Quyet";			=> thêm dữ liệu cách 2
+		//// Select du lieu
+		table.Columns;			=> Đây là 1 array chứa tên các trường DataColumn
+		table.Rows;			=> đây là 1 array chứa DataRow, mỗi phần tử là 1 row, trong 1 row thì lại là 1 array chứa dữ liệu theo key là các trường thuộc tính
+			- ví dụ: table.Rows[1]["Name"] hoặc table.Rows[1][1]	lấy phần tử row vị trí 1 1
+		///// Delete du lieu:
+		- Xóa Row tại vị trí: table.Rows[10].Delete();		=> cần thiết lập delete trên adapter để sử dụng
+		//// Update
+		- table.Rows[2]["Name"] = "dsf";			=> sửa dòng, cần thiết lập trên adapter để sử dụng
+	Đối tượng Dataset:	chứa các DataTable
+		- var dataset = new DataSet();
+            	- DataTable table = dataset.Tables["profile1"];		=> gắn dữ liệu cho DataTable và sử dụng như đối tượng DataTable, cần thiết lập trên adapter để sử dụng
+			- dataSet.Tables.Add(table);			=> thêm table cho dataset
+		- Lưu ý: Các DataTable cùng 1 table trong dataset thì sẽ dùng chung ô nhớ
+	Đối tượng SqlAdapter:	chứa các SqlCommand và phân loại: Insert, Select, Update, Delect ánh xạ, gửi dữ liệu cho DataSet. Những thay đổi của adapter thì sql cũng tự động thay đổi theo
+		=> Cấu hình chức năng cho adapter:
+			- SqlDataAdapter adapter = new SqlDataAdapter();
+            		adapter.TableMappings.Add("Table","profile1");		=> Tạo bảng dữ liệu có tên profile1 trong adapter
+			- Select:
+            			adapter.SelectCommand = new SqlCommand("SELECT * FROM profile",connection);	=> kết nối, truy vấn và gắn kết quả vào sql và profile1
+			-Insert:
+				adapter.InsertCommand = new SqlCommand("insert into profile(Id,Name,Age) values(@Id,@Name,@Age)",connection);
+				adapter.InsertCommand.Parameters.Add("@Id",SqlDbType.Int,1,"Id");	=> Cấu hình tham số biến @Id, kiểu Int, kích thước 1, gắn cho trường Id
+			- Delete:
+				adapter.DeleteCommand = new SqlCommand("delete from profile where Id = @Id",connection);
+				adapter.DeleteCommand.Parameters.Add("@Id",SqlDbType.Int,2,"Id");
+			- Update:
+				adapter.UpdateCommand = new SqlCommand("UPDATE profile set Name = @Name,Age = @Age where Id = @Id",connection);
+            			adapter.UpdateCommand.Parameters.Add("@Id",SqlDbType.Int,2,"Id");		
+            			adapter.UpdateCommand.Parameters.Add("@Name",SqlDbType.Char,22,"Name");
+            			adapter.UpdateCommand.Parameters.Add("@Age",SqlDbType.Int,2,"Age");
+            	- adapter.Fill(dataset);				=> đưa dữ liệu và cấu hình từ Adapter qua DataSet
+		- adapter.Update(dataset);				=> đưa dữ liệu từ dataset qua adapter và đưa vào database
+
+Entity FrameWork: 
+	- install package:dotnet add package System.Data.SqlClient
+		dotnet add package Microsoft.EntityFrameworkCore
+		dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+		dotnet add package Microsoft.EntityFrameworkCore.Design
+		dotnet add package Microsoft.Extensions.DependencyInjection
+		dotnet add package Microsoft.Extensions.Logging
+		dotnet add package Microsoft.Extensions.Logging.Console
+	Xây dựng đối tượng kế thừa từ DbContext, đối tượng này có phương thức: connection, tạo database, xóa database, tạo table, thêm xóa sửa table, select dữ liệu
+	Xây dựng đối tượng table: dùng để lưu dữ liệu của 1 bảng và được quản lý bởi Dbcontext thông qua DbSet<table>tablename{get;set;}
+	Tạo DbContext:
+		- Bước 1: kết thừa class DbContext
+		- Bước 2: override phương thức void OnConfiguring(DbContextOptionsBuilder optionsBuilder){}
+			- Bước 3: base.OnConfiguring(optionsBuilder);			=> chạy phương thức OnConfiguring của DbContext cơ sở: 
+			- bước 3: optionsBuilder.UseSqlServer(stringconnection);	=>  tạo connection với sql
+		- Bước 4: public DbSet<Profile> profile {get;set;} 			=> DbSet Lưu toàn bộ dữ liệu bảng profile, DbSet gồm tập hợp các Đối tượng Profile, mỗi Profile tương ứng 1 row
+		- Bước 5: public static readonly ILoggerFactory logger = LoggerFactory.Create(builder=>{
+            			builder.AddFilter(DbLoggerCategory.Query.Name, LogLevel.Information);
+            			builder.AddConsole(); 
+        		});								=> giúp đọc các câu truy vấn mà nó đã thực hiện dưới console
+			- thêm  vào OnConfiguring: optionsBuilder.UseLoggerFactory(logger);
+		- Bước 6: Thêm chức năng tự reload các deferen và collection trong table:	dotnet add package Microsoft.EntityFrameworkCore.Proxies;
+			- optionsBuilder.UseLazyLoadingProxies();	=> các này tương đối nặng code nên ko đc khuyến khích
+			- thêm virtual trước phạm vi truy cập của property foreign key
+		- Bước 7: Thêm attribute cho table
+			- thay vì thêm attribute ở class Table thì ta có thể thêm từ API ở Dbcontext, chúng ta có thể xóa attribute ở class đi nếu trong bdcontext đã tạo
+			- override OnModelCreating(ModelBuilder modelbuilder){}		thêm phương thức ở trong Dbcontext
+				- modelbuilder.Entity<Profile>(entity => {		=> tạo phương thức sử dụng gerneric và delegate
+				});
+					- entity.ToTable("profile");			=> tương ứng với Attribute [Table("profile")]
+					- entity.HasKey(p=>p.Id);			=> chỉ định khóa chính
+					- entity.HasOne(p=>p.lesson)			=> khóa ngoại có quan hệ 1:n, 1 là thuộc tính lesson, nhiều là thuộc tính profile
+						.HasMany(l=>l.profile)
+						.HasForeignKey("lesId")			=> đổi tên khóa ngoại, nếu có 1 property trùng tên khóa ngoại, thì property đó chính là khóa ngoại
+						.OnDelete(DeleteBehavior.Cascade)	=> chỉ định khóa ngoại không được phép null
+							hoặc OnDelete(DeleteBehavior.NoAction);. 	được phép null
+						.HasConstraintName("fk_profile_lesson");	=> tạo constraint
+					- entity.Property(p=>p.Name)				=> tìm 1 property chỉ định và thiết lập attribute cho nó
+                    				.HasColumnName("ho va ten")			=> thiết lập attribute đặt tên cột là ho va ten
+						.HasColumnType("nvarchar")			=> thiết lập kiểu dữ liệu cột
+						.HasMaxLength(60)				=> thiết lập độ dài 60 kí tự
+						.IsRequire(true)				=> not null
+	Tạo đối tượng table Profile:	using System.ComponentModel.DataAnnotations;
+					using System.ComponentModel.DataAnnotations.Schema;	
+		- Bước 1: tạo class có property là thuộc tính bảng dữ liệu
+		- Bước 2: Tạo property fk: public Lesson Lesson {get;set;}	=> bảng sẽ tự thêm trường LessonId 
+		- Bước 3: thêm attribute cho class và property đã tạo: 
+			[Table("profile")]		=> đặt trên tên class, đây là tên table sẽ tạo trong sqlsv 
+			[StringLength(60)]		=> đặt trước proprety, thiết lập độ dài chuỗi, và tạo kiểu nvarchar trong sql
+			[Key]				=> tạo khóa chính, không thể thêm dữ liệu trường này, mà sẽ tự động tăng
+			[Require]			=> Bắt buộc phải khác null
+			[Column(TypeName="nText")]	=> thiết lập kiểu dữ liệu trong sql
+			[Column("Ten",TypeName="nText")]	=> thiết lập tên và kiểu của trường dữ liệu
+		- Bước 4: Tạo khóa ngoại kết nối tới khóa chính bảng khác
+			[ForeignKey("lesId")]			=> đổi tên thành lesId trong sql
+			public Lesson lesson {get;set}		=> tạo khóa ngoại kết nối tới khóa chính của bảng Lesson
+				- khi thêm dữ liệu thì trường khóa ngoại này chỉ nhận kiểu Lesson, và nó tự tìm đến trường Id để thêm
+				- ta thêm property public int lesId {get;set}	=> property này phải trùng tên với trường foreign key, và ta có thế thêm dữ liệu bằng kiểu số
+			- khi lấy dữ liệu đối tượng lesson trong profile sẽ null: để tải đối tượng lesson này: DbContext.Entry(profile).Reference(p=>p.lesson).Load();
+		- Bước 5: Đối với bảng được tham chiếu tới có quan hệ 1 - nhiều:
+			- ví dụ 1 Lesson có thể có nhiều profile: ta thiết lập property chứa các profile trên class Lesson
+				- public List<Profile> profile {get;set;}
+				- khi excute lấy dữ liệu, property này ko được nạp, nếu muốn nạp cần thực hiện lệnh: DbContext.Entry(a).Collection(p=>p.profile).Load();	=> có thể bỏ lệnh này ở bước 6 tạo dbcontext
+	Sử dụng DbContext:	profileDbContext dbContext = new profileDbContext();
+		- 1 số phương thức thao tác với database:	Dựa vào Stringconnection ở trong DbContext
+			- string name = DbContext.Database.GetDbConnection().Database;		=> Lấy tên database
+			- bool IsSuccess = DbContext.Database.EnsureCreated();			=> Nếu database chưa có thì sẽ Tạo database
+			- bool IsSuccess = DbContext.Database.EnsureDeleted();			=> Xóa database
+		- thao tác với Table:	Lưu ý: DbContext.profile là đại diện cho 1 table, nó là 1 tập hợp các đối tượng profile mà ta đã tạo.
+					-  Chúng ta chỉ cần thao tác với ổ nhớ này và dùng lệnh DbContext.SaveChanges();
+		- Thêm dữ liệu: dbContext.Add(new Profile(){Name = "quyet",Age = 22});		=> thêm 1 row trường Id ko cần thêm vì nó đã được tăng tự động
+			- dbContext.AddRanger(
+				new Profile(){new Profile(){Name = "quyet",Age = 22},
+				new Profile(){name="tam", Age= 22});				=> thêm nhiều row cùng lúc
+			- dbContext.SaveChanges();
+		- Xóa dữ liệu:
+			Profile row = (from p in dbContext.profiles
+                               	where p.Id == Id
+                                select p).FirstOrDefault();		=> chúng ta truy vấn linq vào dữ liệu để lấy 1 đối tượng profile và xóa nó
+			dbContext.Remove(row);				=> 	row là 1 đối tượng Table Profile
+			dbContext.SaveChanges();	=> chúng ta xóa row chỉ là ở trong dbContext.profiles. để xóa trong sql thì cần lưu lại
+		- Sửa dữ liệu:
+			- Profile row = (from p in dbContext.profiles
+                                    where p.Id == Id
+                                    select p).FirstOrDefault();		=> truy vấn lấy ra row và gắn lại giá trị cho nó
+				- row.Name = "quyet";
+				 row.Age = 22;
+			- dbContext.SaveChanges();				=> cuối cùng là ko nên quên lưu lại
+				Lấy số dòng cập nhập: int count = dbContext.SaveChanges();
+		- Select dữ liệu:
+			- var a = products.SelectMany(p=>p.Price).Distinct();	=> loại bỏ các phần tử giống nhau
+			- var profile = from p in dbContext.profiles
+                                    select p;				=> truy vấn linq để lấy toàn bộ dữ liệu hoặc chỉ dữ liệu cần thiết với where
+			- profile.ToList().ForEach(p=>Console.WriteLine(p.Name));	=> read dữ liệu như các List thông thường
+			- Lấy dữ liệu từ bảng Carriage thông qua khóa ngoại:
+				TransportOrder = await _context.TransportOrders		=> transportOrder chứa khóa ngoại
+                			.Include(t => t.Carriage).ToListAsync();
+			- Lấy dữ liệu bảng Order từ liên thông khóa ngoại:
+				TransportOrder = await _context.TransportOrders		=> bảng transportOrder chứa khóa ngoại tới Carriage
+                			.Include(t => t.Carriage.Order).ToListAsync();	=> và Carriage chứa khóa ngoại tới Order
+		- Theo dõi sự thay đổi dữ liệu:
+			- Nếu đối tượng Không được theo dõi thì khi context.SaveChange() sẽ không có tác dụng
+			- lấy dữ liệu + Theo dõi: var product = (from u in _context select u).FirstOrDefault();
+				- khi thực hiện truy vấn lấy dữ liệu từ _context thì đối tượng đó sẽ tự động được theo dõi
+				- Context sẽ giám sát biến product và đưa ra các lệnh savechange phù hợp
+			
+				để hủy tự động theo dõi của _context: _context.ChangeTracker.AutoDetectChangesEnabled = false;
+			- Lấy Đối tượng giám sát theo dõi của product: EntityEntry<Product> entry = _context.Entry(product);
+				- Hủy theo dõi: entry.State = EntityState.Detached
+		_context.Attach(oldCustomer).State = EntityState.Deleted;	theo dõi oldCustomer và đánh dấu nó cần được xóa nếu tồn tại trong csdl thì sẽ bị xóa
+		_context.Attach(oldCustomer).State = EntityState.Unchanged	theo dõi oldCustomer và đánh dấu nó là thực thể không có gì thay đổi khi _context.Savechange() sẽ ko làm gì cả
+		_context.Attach(oldCustomer).State = EntityState.Added		theo dõi oldCustomer và đánh dấu nó là thực thể cần được thêm mới  khi _context.Savechange() sẽ tạo dòng mới
+		_context.Attach(oldCustomer).State = EntityState.Detached;	hủy theo dõi nếu oldCustomer đã được theo dõi
+		_context.Attach(oldCustomer).State = EntityState.Modified;	theo dõi và đánh dấu nó cần update khi savechange
+		_context.Attach(oldCustomer).Property(p =>  p.Name).IsModified  = true;			theo dõi 1 thuộc tính và đánh dấu cần cập nhật
+IQueryable<Object>:
+	đổi qua lại giữa 2 kiểu dữ liệu: user.AsQueryable() và user.ToList()
+	- tư duy: 2 kiểu dữ liệu trên đóng vai trò như 1 table
+		- linq sẽ đọc từng từ khóa theo thứ tự
+		- thao tác dữ liệu từ: lấy dữ liệu -> join 2 bảng -> lọc (where)  -> sắp xếp(orderBy)
+					-> lấy dữ liệu(select)
+		- lấy dữ liệu: from u in users		=> lấy dữ liệu mỗi dòng u từ trong table users
+		- join 2 bảng: join brand in brands on u.Brand equals brand.ID
+			join brand in brands 			=> lấy dữ liệu dòng từ Table brands
+			on u.Brand equals brand.ID 	=> kết nối 2 bảng thông qua khóa ngoại u.Brand và khóa chính brand.ID
+			into t from brand in t.DefaultIfEmpty()	=> join đầy đủ
+		- sắp xếp: 	orderby thuoctinh		=> sắp xếp từ nhỏ đến lớn
+				orderby thuoctinh descending 	=> sắp xếp từ lớn đến nhỏ
+		- lọc: where điềukiện		=> điều kiện có thể là 1 biến hay 1 biểu thước logic, miễn sao trả về true hoặc false
+		- let count = test.Count()	=> sử dụng biến trong truy vấn
+		- into r			=> lưu tạm kết quả truy vấn trước đó vào biến r
+		- group u by u.Name		=> gom các phần tử cùng u.Name vào 1 nhóm có dạng Key:{phan tu} và thay đổi cấu trúc dữ liệu
+		- select biếnchứadữliệu;	=> select lặp qua tất cả dòng dữ liệu đã lọc 
+						và return biếnchứadữliệu với mỗi lần lặp
+			var a = form p in products
+		where p.Price >=400
+		orderby p.price descending
+		select	new {name = p.Name, Price = p.Price};
+
+	var a = form p in products
+		group p by p.Price into gr
+		orderby gr.Key
+		select gr
+			co the su dung Key va value
+
+SendEmail:
+	Cấu hình tin nhắn gửi:
+		var mailMessage = new MailMessage();				=> đối tượng message
+                mailMessage.From = new MailAddress("quyet1702@gmail.com");		=> Email người gửi
+                mailMessage.To.Add(new MailAddress("quyet1702@gmail.com"));		=> Email người nhận. có thể add thêm nhiều địa chỉ
+                mailMessage.Subject = "xin chao";					=> tiêu đề email
+                mailMessage.Body = "hello";						=> nội dung email
+                mailMessage.IsBodyHtml = true;						=> cho phép nội dung email sử dụng thẻ html
+                SmtpClient smtp = new SmtpClient();				=> đối tượng account
+                smtp.UseDefaultCredentials = false;							=> chưa tim hiểu, có thể bỏ lệnh này
+                smtp.Credentials = new NetworkCredential("quyet1702@gmail.com", "Quyet0356061172");	=> chứa thông tin username password
+                smtp.Host = "smtp.gmail.com";								=> địa chỉ server mà email sẽ gửi đi, "smtp.gmail.com" là bắt buộc
+                smtp.EnableSsl = true;									=> hỗ trợ ssl
+                smtp.Send(mailMessage);									=> gửi đối tượng message
+                smtp.Dispose();
+                mailMessage.Dispose();
+
+
+Bitmap, Graphics:
+	dotnet add package System.Drawing.Common
+	là đối tượng chứa dữ liệu của 1 hình ảnh:
+		Bitmap image = Bitmap(@$"Images\DEMO.jpg");	=> Thêm dữ liệu hình ảnh gồm width, heigh
+			image.Width;
+			image.Height;
+	Graphics graphics = Graphics.FromImage(image);	=> là đối tượng dùng để vẽ ảnh, với tham số là ảnh cần vẽ
+		- vẽ text lên hình ảnh:
+			graphics.DrawString("hello", arialFont, Brushes.Blue, firstLocation,drawFormat);
+			Các tham số lần lượt là Text, Font, Màu chữ, tọa độ vẽ, StringFormat
+				- Font: new Font("Arial", 50);
+				- Màu chữ:
+					new SolidBrush(Color.Black);		=> màu chữ
+					hoặc Brushes.BlueViolet
+				- Tọa độ vẽ:
+					new Point(10, 10);
+					hoặc float x, float y;
+					hoặc new Rectangle (new Point(0, 0), new Size (320, 400));
+				- StringFormat drawFormat = new StringFormat();
+					drawFormat.Alignment = StringAlignment.Center;		=> căn giữa theo width
+						StringAlignment.Far;					=> Đẩy về cuối theo Width
+						StringAlignment.Near;					=> Đẩy về đầu theo Width
+    					drawFormat.LineAlignment = StringAlignment.Center;	=> căn giữa theo height
+						StringAlignment.Far;					=> Đẩy về cuối theo Height
+						StringAlignment.Near;					=> Đẩy về đầu theo Height
+			drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;	=> cho phép lật ngang text
+		image1.Save(@$"Images\DEMO1.jpg");		=> In ra file ảnh từ dữ liệu
+
+dotnet add package SixLabors.ImageSharp.Drawing --version 1.0.0-beta14
+	Image image = Image.Load(@$"wwwroot\Upload\{Picture.FileName}");	=> lấy ảnh
+		image.Width	=> lấy chiều ngang của ảnh
+		image.Height	=> lấy chiều cao của ảnh
+	image.Mutate(c => c.Resize(500, 400));	=> chỉnh kích thước ảnh (chiều ngang, chiều cao)
+	var font = SystemFonts.CreateFont("Arial", 14, FontStyle.Regular);	=> tạo font có fontfamily là arial, size = 14
+	Image copy = image.Clone(x => x.Resize(image.Width / 2, image.Height / 2))	=> tạo 1 bản sao Image
+	image.Mutate(x=> x.DrawText(yourText, font, Color.White, new PointF(10, 10)));	=> thêm text vào ảnh
+	image.Save("SDF.jpg");	=> xuất ảnh
+	
+		
+			
+		
+			

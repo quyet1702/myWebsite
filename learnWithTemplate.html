@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    header {
+        background-color: black;
+        
+    }
+    header >ul {
+        list-style-type: none;
+        content: "";
+        clear: both;
+        display: table;
+    }
+    header > ul >li {
+        float: left;
+        position: relative;
+    }
+    header > ul > li >a {
+        color: white;
+        display: block;
+        padding: 16px;
+        text-decoration: none;
+    }
+    header >ul >li:hover >a {
+        background-color: #ccc;
+        color: black;
+    }
+    header >ul >li > ul> li:hover> a {
+        background-color: red;
+        color: black;
+    }
+    header ul> li:hover ul{
+        display: block;
+    }
+    .nav-more {
+        display: none;
+        position: absolute;
+        background-color: rgb(59, 39, 39);
+    }
+    .nav-more li {
+        display: inline-block;
+        width: 100%;
+
+    }
+    .nav-more li a {
+        display: block;
+        white-space: nowrap;
+        color: rgb(241, 237, 237);
+        text-decoration:none;
+        padding: 10px;
+    }
+    main {
+    }
+    main section {
+        background-color: brown;
+        padding: 20px;
+    }
+    footer {
+        background-color: blue;
+        padding: 30px;
+    }
+</style>
+<body>
+    <header>
+        <ul>
+            <li><a href="">HOME</a></li>
+            <li><a href="">BAND</a></li>
+            <li><a href="">TOUR</a></li>
+            <li><a href="">CONTACT</a></li>
+            <li>
+                <a href="">MORE <i class="fa-solid fa-caret-down"></i></a>
+                <ul class="nav-more">
+                    <li>
+                        <a href="">lidddđ dđ dđ nk</a>
+                    </li>
+                    <li>
+                        <a href="">link</a>
+                    </li>
+                    <li>
+                        <a href="">link</a>
+                    </li>
+                    <li>
+                        <a href="">link</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <section></section>
+        <section></section>
+        <section></section>
+        <section></section>
+        <section></section>
+    </main>
+    <footer></footer>
+</body>
+</html>

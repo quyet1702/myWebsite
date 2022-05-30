@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      color: white;
+    }
+
+    .slogan {
+      padding: 20px;
+      border: 1px solid red;
+      text-align: center;
+      text-shadow: 2px 2px red;
+    }
+
+    header {
+      background-color: black;
+      border: 1px solid red;
+    }
+
+    header .nav-left li {
+      float: left;
+    }
+
+    .active {
+      background-color: red;
+    }
+    
+    header .nav-left {
+      list-style-type: none;
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    header .nav-left li {
+      float: left;
+    }
+
+    header .nav-left li a {
+      color: white;
+      display: block;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    header > .nav-left > li:hover > a {
+      background-color: red;
+    }
+
+    header > .nav-left > li:hover > .nav-sub {
+      display: block;
+    }
+
+    header .nav-sub {
+      position: absolute;
+      background-color: black;
+      list-style-type: none;
+      display: none;
+      border: 1px solid red;
+    }
+
+    header .nav-sub li {
+      width: 100%;
+    }
+
+    header .nav-sub li:hover a {
+      background-color: red;
+    }
+
+    main {
+      display: flex;
+    }
+    main .column {
+      flex: 3;
+      background-color: black;
+      padding: 20px;
+      border: 1px solid red;
+    }
+    main .column {
+      flex: 3;
+      background-color: black;
+      padding: 20px;
+      border: 1px solid red;
+    }
+
+    main .content-navleft {
+      flex: 1;
+      background-color: black;
+      border: 1px solid red;
+    }
+
+    main .content-navleft .navleft li a {
+      color: white;
+      display: block;
+      text-decoration: none;
+      padding: 10px;
+      white-space: nowrap;
+    }
+
+    main .content-navleft .navleft li:hover a {
+      background-color: red;
+    }
+
+    footer {
+      background-color: black;
+      padding: 20px;
+      border: 1px solid red;
+    }
+
+    @media (max-width: 600px){
+      main {
+        flex-direction: column
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2 class="slogan">
+      Learning Font-End Web
+    </h2>
+    <ul class="nav-left">
+      <li><a class="active" href="LearnHTML.html">HTML</a></li>
+      <li><a href="trongluc.txt">CSS</a></li>
+      <li><a href="LearnJS.html">JavaScripts</a></li>
+      <li style="position: relative;"><a href="#"> Contact <i class="fa-solid fa-caret-down"></i></a>
+        <ul class="nav-sub">
+          <li><a href="https://www.facebook.com/quyet1702" target="_blank">facebook</a></li>
+          <li><a href="test.html">link 2</a></li>
+          <li><a href="test.html">link 2</a></li>
+          <li><a href="test.html">link 2</a></li>
+          <li><a href="test.html">link 2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+  <main>
+    <div class="content-navleft">
+      <ul class="navleft">
+        <li><a class="active" href="">Session 1</a></li>
+        <li><a href="test.html">Session 2</a></li>
+        <li><a href="test.html">Session 3</a></li>
+        <li><a href="test.html">Session 4</a></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h2>Learn CSS</h2>
+      <hr>
+      <p>Tổng quan:</p>
+      <p>- Selector</p>
+      <p>- Element</p>
+      <p>- Layout</p>
+    </div>
+    <div class="column"></div>
+  </main>
+  <footer style="text-align: center;">
+    <p>Contact: quyet1702@gmail.com</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.slogan {
+  padding: 20px;
+  border: 1px solid red;
+  text-align: center;
+  text-shadow: 2px 2px red;
+}
+
+header {
+  background-color: black;
+  border: 1px solid red;
+}
+
+header .nav-left li {
+  float: left;
+}
+
+.active {
+  background-color: red;
+}
+
+header .nav-left {
+  list-style-type: none;
+  content: "";
+  clear: both;
+  display: table;
+}
+
+header .nav-left li {
+  float: left;
+}
+
+header .nav-left li a {
+  color: white;
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+}
+
+header > .nav-left > li:hover > a {
+  background-color: red;
+}
+
+header > .nav-left > li:hover > .nav-sub {
+  display: block;
+}
+
+header .nav-sub {
+  position: absolute;
+  background-color: black;
+  list-style-type: none;
+  display: none;
+  border: 1px solid red;
+}
+
+header .nav-sub li {
+  width: 100%;
+}
+
+header .nav-sub li:hover a {
+  background-color: red;
+}
+
+main {
+  display: flex;
+}
+main .column {
+  flex: 1;
+  background-color: black;
+  padding: 20px;
+  border: 1px solid red;
+}
+main .content-main {
+  flex: 6;
+  background-color: black;
+  padding: 20px;
+  border: 1px solid red;
+}
+
+main .content-navleft {
+  flex: 1;
+  background-color: black;
+  border: 1px solid red;
+}
+
+main .content-navleft .navleft li a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+main .content-navleft .navleft li:hover a {
+  background-color: red;
+}
+
+footer {
+  background-color: black;
+  padding: 20px;
+  border: 1px solid red;
+}
+
+@media (max-width: 600px){
+  main {
+    flex-direction: column
+  }
+}
