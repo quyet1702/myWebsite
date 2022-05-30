@@ -70,13 +70,7 @@ header .nav-sub li:hover a {
 main {
   display: flex;
 }
-main .column {
-  flex: 1;
-  background-color: black;
-  padding: 20px;
-  border: 1px solid red;
-}
-main .content-main {
+main > div {
   flex: 6;
   background-color: black;
   padding: 20px;

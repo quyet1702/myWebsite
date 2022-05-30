@@ -1,0 +1,539 @@
+- Tên biến: gồm chữ(chữ nước ngoài), số, ký tự _ và $. không bắt đầu bằng số. phân biệt hoa, thường.
+- sử dụng trong thẻ html và <script> </script>
+	- khai báo ở đuôi của file html
+	- sử dụng event trên thẻ: onclick="document.write(5 + 6)"
+- Toán tử:
+        + số học: + cộng, - trừ, * nhân, / chia, ** lũy thừa, % chia lấy dư, ++ tăng 1 đơn vị, -- giảm 1 đơn vị.
+                -> ví dụ: var a = number++ thì a =7 do a chỉ nhận giá trị đc in ra
+                    '++' thực hiện tăng 1 đơn vị trong bộ nhớ ảo
+                    'number' in giá trị từ bộ nhớ ảo
+                -> kiểm tra số hợp lệ: isNaN(234/0)
+                -> Số thành chuỗi: (11.23).toString(); 
+                -> làm tròn số thập phân thứ 2: (342.1223).toFixed(2) -> 342.12
+                -> kiểm tra số hữu hạn: Number.isFinite(3412)
+                -> kiểm tradá số nguyên: Number.isInteger(12312)
+                -> ép kiểu số float : Number.parseFloat(3213)
+                -> chuyển chuối thành số nguyên: Number.parseInt('23123')
+                -> Number.prototype.toFixed()
+                -> chuyển đổi số thành String: Number.prototype.toString()
+                -> kiểm tra phép tính hợp lệ: Number.isFinite(2 / 0);  -> kiểu dữ liệu boolean
+        + toán tử gắn: =, +=, =+, *=, /=, **=
+            -> ví dụ: += thì thực hiện phép cộng trước rồi gắn sau
+        + toán tử so sách: <, >, ==. <=, >=, !=, ===, !==, !!
+            -> '===' là so sách cả giá trị và kiểu dử liệu (String, number,..)
+            -> !! đơn giản là phủ định 2 lần
+        + Toán tử logic: && || !
+            -> ví dụ: a = 'asdd' && 'fff' && 'quyet' thì a = 'quyet' do && sẽ kiểm tra và lấy giá trị có điều kiện sai đầu tiên từ trái qua phải, trường hợp ko có điều kiện sai thì sẽ lấy điều kiện cuối cùng
+            -> ví dụ: a = false || 'ádff || 'sdf' thì a = 'ádff' do || sẽ kiểm tra từ trái qua phải lấy giá trị true đầu tiên trường hợp ko có giá trị sai thì sẽ lấy giá trị cuối cùng.
+- Hàm xây dựng sãn của javascript
+        + console.log(variable);
+        + alert(variable);				-> hiện thông báo: nút ok
+        + confirm(variable);				-> hiện thông báo: nút ok, nút cancel
+        + prompt(variable);				-> hiện thông báo: ô input, nút ok, nút cancel
+        + setTimeout(function(){ //code}, 1000);	-> thực thi code sau 1s, chỉ chạy code 1 lần
+        + setInterval(function(){ //code}, 1000);	-> thực thi code mỗi 1, chạy code nhiều lần
+- Kiểu dữ liệu:
+	var:
+		- tự convert thành mọi kiểu dữ liệu
+		- biến có thể khởi tạo nhiều lần, là lấy phần khởi tạo cuối cùng
+		- khi biến được gắn trong for, if,.. đều có thể sử dụng ở bên ngoài
+	let:
+		- là bản cập nhật của EF6 để khắc phục ngược điểm cho kiểu var
+		- let được gắn giá trị trong for, if,.. sẽ không liên quan đến bên ngoài
+		- chỉ được khai báo 1 lần
+        + boolean: true, false
+            -> 6 giá trị luôn trả về false: 0, false, null, underfined, NaN, '', ""
+        + number
+                -> Math.PI -> trả về số PI
+                -> Math.round(3.4); -> trả về con số được làm tròn
+                -> Math.ceil(3.4); -> làm tròn lên thành 4
+                -> Math.floor(3.9) -> làm tròn xuống thành 3
+                -> Math.abs(-4); -> trả về số tuyệt đối 
+                -> Math.random() -> trả về số ngẫu nhiên trong khoảng 0 - 1
+                -> Math.Max(100, 200, 1, 5); -> trả về số lớn nhất trong dãy số
+                -> Math.Min(100, 200, 1, 5); -> trả về số Nhỏ nhất trong dãy số
+        + String
+		-> kiểm tra có chứa chuỗi 'adsf' hay không: myString.includes('adsf') => kết quả trả về true false
+			=> kiểm tra từ index: myString.includes('adsf',1)
+                -> \" thêm dấu " vào trong chuối
+                -> ví dụ: var myString = "   abc acb abc mu    ";
+                -> Nối chuỗi: 'van' + ' quyet' = 'van quyet'
+                -> \' \" để thêm ' " vào trong chuối
+                -> `toi la ${name} ${name1}` cách nối chuỗi rút gọn trong ES6
+                ->  Độ dài chuỗi: myString.length
+                -> tìm vị trí chuỗi đầu tiên: myString.indexOf('mu');
+                -> tìm vị trí chuỗi từ 1 vị trí: myString.indexOf('mu', 6);
+                -> tìm vị trí chuối cuối cùng: myString.lastIndexOf('mu');
+                -> tìm vị trí chuối chỉ có 1 tham số search: myString.search(''abd);
+                -> cắt chuối từ vị trí 4 tới vị trí 6: myString.slice(4, 6);
+                -> cắt chuối từ vị trí 4 tới hết myString.slice(4);
+                -> cắt chuối từ phải sang trái myString.slice(-4, -6);
+                -> thay thế chuối 'abc' đầu thành 'quyet': myString('abc', 'quyet')
+                -> thay thế toàn bộ chuối 'abc' thành 'quyet': myString(/abc/g, 'quyet')
+                -> in hoa chuối: myString.toUpperCase();
+                -> loại bỏ khoảng trắng thừa ở 2 đầu chuối: myString.trim()
+                -> cắt chuối thành array theo điểm chung: myString.split(, )
+                -> lấy chuỗi từ 1 indexOf: myString.charAt(5)
+                -> kiểm tra có phải chuỗi hay ko: typeof myString == 'string'
+        + Underfined		-> ví dụ: var a; nếu không gắn giá trị thì kiểu dữ liệu là Underfined 
+        + Null
+	+ date:
+        + Symbol
+            -> ví dụ: var a = Symbol('id') var b = Symbol('id')
+            -> sysbol có đặc tính kiểu dữ liệu là duy nhất nên  a===b luôn có giá trị false
+        + function
+            -> ví dụ khai báo: var a = function(){//code}
+                    -> không thể thực thi trước khi định nghĩa
+            -> ví dụ khai báo: function a(){//code}
+                    -> có thể thực thi trước khi định nghĩa
+            -> thực thi hàm: a();
+            ->truyền 1 hoặc nhiều tham số:  function a(name1, name2){
+                                        //code
+                                    }
+                                    a("đá", "ádsa");
+            -> gắn giá trị cho hàm bằng lệnh "return giá trị":
+                    -> các lệnh sau return đều ko đc thực thi
+                    -> ví dụ:   function cong(a, b){
+                                        return a + b;
+                                    }
+                                var a = cong();
+                        -> giá trị của hàm cong(); là: a + b
+        + Object
+                -> var myObject = {
+                    name: 'quyet',
+                    age: 22,
+                    myfunction: function(){//code}
+                    [keyname]:"đasad"
+                };
+		-> thuộc tính chỉ đc gắn khi được gọi đến
+                -> phương thức: myObject.myfunction()
+                -> thuộc tính: myObject.name
+                -> thêm key từ biến: trong ví dụ:
+                        ->  keyname ="email"
+                            [keyname]: "đasadd" nằm trong object
+                -> gọi ra: myObject.name hoặc myObject['NAME']
+                -> thêm phần tử: myObject.email = "dsfasdf" hoặc myObject['ho-ten'] = "đasdas"
+                -> xóa key value: delete myObject.name;
+                -> cách lấy key: Object.keys(myObject)
+                -> cách lấy value: Object.values(myObject)
+        + array:
+                -> làm việc với mảng:
+                            -> var myArray = [
+                                'àdaf',
+                                'ádfdasf',
+                                13
+                            ];
+				- > kiểm tra phần tử có tồn tại hay không:	 myArray.includes('xinchao')
+					=> kiểm tra với index: 			myArray.includes('xinchao',1)
+                            -> kiểm tra array: Array.isArray(myArray)
+                            -> kiểm tra số phần tử của array: myArray.length
+                            -> lấy phần tử của Array: myArray[2]
+                            -> array thành chuỗi: myArray.toString();
+                            -> array thành chuỗi- nhưng đc ngăn cách giữa các phần tử tự cho: myArray.join("-");
+                            -> xóa phần tử cuối mảng và trả về phần tử đã xóa: myArray.pop()
+                                -> trả về underfined nếu không có phần tử để xóa
+                            -> xóa phần tử đầu mảng và trả về phần tử đã xóa: myArray.shift()
+                                -> trả về underfined nếu không có phần tử để xóa
+                            -> xóa 1 hoặc nhiều phần tử bất kỳ: myArray.splice(1,2) -> xóa từ phần tử 1 đến phần tử 2
+                            -> xóa và thêm phần tử: myArray.splice(1,2, "dfasdf")
+                            -> thêm 1 hoặc nhiều phần tử vào đầu mảng và trả về length: myArray.unshift("ádd", "dđ");
+                            -> thêm 1 hoặc nhiều phần tử vào cuối mảng và trả về length: myArray.push("ádd", "dđ");
+                            -> ghép 2 array: myArray.concat(myarray2)
+                            -> copy mảng: myArray.slice(0)
+                            -> cắt phần tử trong mảng từ trái sang phải: myArray.slice(1,4)
+                            -> cắt phần tử trong mảng từ phải sang trái: myArray.slice(-1, -4)
+                -> phần tử của mảng là các Object:
+				shift() 			=> xóa phần tử đầu tiên và sắp xếp lại index
+				pop()				=> xóa phần tử cuối ra khỏi mảng
+				splice(0, index);		=> xóa phần tử theo index
+				const citrus = fruits.slice(1); => xóa hết phần tử + trả về array phần tử theo index đó
+				push("Lemon")			=> thêm phần tử vào cuối mảng
+				unshift("Lemon")		=> thêm phần tử vào đầu mảng
+				splice(index, 0, "Lemon",..);	=> thêm phần tử theo index
+				concat("hello");		=> thêm phần tử vào cuối mảng
+				concat(["hello","sdf"]);	=> thêm nhiều phần tử vào cuối mảng
+				splice(2, 0, "Lemon", "Kiwi");	=> thêm nhiều phần tử theo index
+				toString()			=> gộp 1 mảng thành 1 chuỗi được phân tách bằng dấu phẩy
+				join(" * ");			=> gộp 1 mảng thành 1 chuỗi và thay đổi dấy phân tách
+				arr1.concat(arr2, arr3);	=> gộp 3 mảng thành 1 mảng
+				length				=> độ dài mảng
+                            	forEach(function(){//code}); 	=> lặp qua tất cả các phần tử
+                            -> every(); kiểm tra các phần tử thỏa 1 điều kiện nào đó
+                                    - trả về giá trị true/false kiểm tra tất cả các phần tử của các object có value = 0 hay ko: 
+                                    - var isCoin = myArray.every(function(value, index){
+                                            return value.coin === 0;
+                                    }
+                            -> some();	kiểm tra 1 phần tử thỏa mãn 1 điều kiện nào đó
+                                    - trả về giá trị true/false kiểm tra 1 trong các phần tử của các object có value = 0 hay ko: 
+                                    - var isCoin = myArray.some(function(value, index){
+                                            return value.coin === 0;
+                                    }
+                            -> find():	kiểm tra và lấy 1 phần tử thỏa mãn 1 điều kiện nào đó
+                                    - tìm chỉ 1 phần tử của array theo các phần tử của object: 
+                                    - name ở trong ví dụ là phần tử của object
+                                    - var values = myArray.find(function(value, index){
+                                            return value.name === "quyet";
+                                    });
+                            -> filter(): giống như find nhưng sẽ trả về toàn bộ phần tử thỏa mãn điều kiện
+                                    - tìm tất cả các phần từ của array có name==="quyet" theo các phần tử của object: 
+                                    - name ở trong ví dụ là phần tử của object
+                                    - var values = myArray.filter(function(value, index){
+                                            return value.name === ""quyet";
+                                    }
+                            -> map(); 	- khi muốn sửa giá trị của các phần từ trong array
+					- cách hoạt động: 
+						- duyệt qua các phần tử của array
+						- mỗi lần duyệt thì sẽ gọi 1 function được chúng ta khai báo
+						- và thay phần tử trong array bằng giá trị return của function
+                                    -> var copy = a.map(function(value, key){
+                                            return value.name
+                                        });
+                                        console.log(copy);
+                                        -> thiết lập lại tất cả các phần tử trong object
+
+                            -> reduce(): giúp trả về 1 giá trị được tính từ array
+					 tạo biến lưu trữ và cộng vào từ value.age của các object và trả về giá trị biến lưu trữ
+                                        -> var count = a.reduce(function(total, value, key){
+                                                return total + value.age;
+                                            }, 0);
+						- duyệt lần lượt qua các phần tử của array
+						- mỗi lần duyệt sẽ chạy 1 function
+						- và biến tích trữ chính là return của function
+                                        -> total là biến lưu trữ; 0 là giá trị khởi tạo cho biến lưu trữ
+                                        -> nếu không chuyền giá trị khởi tạo thì nó sẽ lấy phần tử đầu tiên của array làm giá trị khởi tạo
+                                        ->  làm phằng array
+                                        var a = [1,2,3,[4, 5, 6],[7,8]];
+                                            var lamphang = a.reduce(function(phang,value, key){
+                                                return phang.concat(value);
+                                            },[]);
+                                            console.log(lamphang);
+        + kiểm tra kiểu dữ liệu: console.log(typeof myObject);
+
+- Promise
+	- Sync (Đồng bộ) => chạy theo tuần tự
+		- lệnh trước thì phải chạy trước và hoàn tất, rồi mới tới lệnh sau
+	- Async (Bất đồng bộ) => không chạy theo tuần tự
+		- setTimeout, setInterval, fetch, XMLHttpRequest
+		- các lệnh bất đồng bộ đều sử dụng callback
+		- khi return 1 promise trong then thì promise này sẽ chạy then ở dưới
+		- khi return 1 dữ liệu trong then thì dữ liệu này sẽ trở thành đối số then ở dưới
+		- Promise
+			- 3 trạng thái của promise: pendding, fulfilled, rejected
+			var promise = new Promise(
+        			function(resole){
+            				resole();
+        			}
+    			);
+   			promise
+        			.then(function(){
+            				console.log('successully;')
+        			})
+        			.catch(function(){
+            				console.log('failure;')
+        			})
+        			.finally(function(){
+            				console.log('done;')
+        			})
+
+fetch:
+	- sử dụng để lấy dữ liệu json từ API
+	- fetch('https://json...')
+		.then(function(data){
+			data.json		=> dữ liệu ở dạng json được chuyển đổi thành js
+		})
+		.then(function(data){
+			console.log(data);
+		})
+
+- Các câu lệnh theo 1 cấu trúc:
+        + if else:
+                ->  if(điều kiện){ //code1} else {//code2}
+                ->  điều kiện đúng thì thực thi code 1, nếu sai thì thực thi code 2
+        + Toán tử 3 ngôi: 
+                -> dùng thay các câu lệnh if else đơn giản
+                -> giúp code ngắn gợn hơn
+                -> ví dụ: var result = a > b ? a:b      -> nếu điều kiện đúng thì xuất a, sai thì xuất b
+        + switch:
+                ->  var a = 1;
+                    switch(a){
+                        case 1: console.log("day la so 1");
+                                break;
+                        case 2: console.log(" day la so 2");
+                            break;
+                    }
+        + for:
+                => for(var i = 1; i<=100; i++ ) {
+                    console.log(i);
+                }
+
+                -> 1 mảng hay 1 chuỗi đều có index(key) và value(giá trị): 
+                    - value của chuỗi 'quyet' là: q,u,y,e,
+                    - value của mảng ['quyet',tam] là : "quyet" và "tam"
+                    - vòng lặpfor/in lấy giá trị của key: for(var key in mystring) { 
+                                                            console.log(mystring[key])
+                                                            //console.log(myArray[key])
+                                                        }
+                    - vòng lặp for/of dùng để lấy value: for(var value of mystring) { 
+                                                            console.log(mystring[value])
+                                                        }
+        while:
+                -> var i = 1;
+                    while(i<=100){
+                        console.log(i);
+                        i++;
+                    }
+
+        do/while:   vòng lặp này cho phép chạy trước 1 lần rồi mới kiểm tra điều kiện
+                -> var i = 0;
+                    do {
+                        i++;
+                        console.log(i);
+                    } while(i < 10);
+
+        lệnh break/ continue trong vòng lặp:
+            -> gặp lệnh break trong vòng lặp thì nó sẽ thoát hẳn ra khỏi vòng lặp đó.
+            -> gặp lệnh continue thì chương trình ko chạy các lệnh ở dưới mà sẽ nhảy cóc chuyển qua bước kiểm tra điều kiện trong vòng lặp 
+lập trình hướng đối tượng:
+	khai báo:
+		tạo 1 function:	function A(){}
+	property:
+		this.name = "quyet;	=> this tượng trưng cho A của A.name
+		phải có từ khóa this thì lệnh A.property mới có thể sử dụng
+		các property này tự động gắn khi new đối tượng
+	method:
+		giống property	this. Run = function(){//code}
+		các property này tự động chạy và gắn khi new đối tượng
+	method dạng 2:
+		khai báo nằm trong property
+		this.property={
+			 id:0,
+            		name:"Quyet",
+			....
+			method: function(){
+				var name = this.name	=> để có thể sử dụng this.name trong setTimeout, setInterval()
+				//code
+			}
+		}
+
+- object constructor:
+        + là 1 đối tượng gồm nhiều thuộc tính chung, sau đó sẽ đc new ra thành nhiều đối tượng
+        + tạo 1 function và các tham số rồi gắn vào tham số trong function đó
+        + khai báo 1 đối tượng được new ra từ function trên
+        + sử dụng các thuộc tính của đối tượng này: ví dụ: author.name
+        + khi new đối tượng thì có thể tự thêm các thuộc tính mới: author.title = "myseft";
+        + ví dụ:
+            ->  function User(firstName, lastName){
+                this.lastName = lastName;
+                this.firstName = firstName;
+                this.getName = function(){
+                    return `${this.firstName} ${this.lastName}`;
+                }
+            }
+            var author = new User("Hoang", "Quyet", "avatar");
+            var user = new User("Hoang", "Tam", "Avatar");
+            author.title = "myseft";
+            console.log(author.title);
+            console.log(author.firstName);
+            console.log(author.lastName);
+            console.log(author.getName());
+        + thêm thuộc tính cho User: User.prototype.age = 22;
+                -> console.log(user.age)
+
+- Date:
+        + tạo đối tượng date: var date = new Date();
+        + lấy giây: var milliseconds = date.getMilliseconds();
+        + lấy phút: var minutes = date.getMinutes();
+        + lấy giờ: var hours = date.getHours();
+        + lấy ngày: var day = date.getDate()
+        + lấy tháng: var month = date.getMonth() +1;
+                -> getMonth có giá trị tự 0-11 nên phải + 1 để ra tháng đúng
+        + lấy năm: var year = date.getFullYear();
+        + document: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+        + ví dụ:
+                ->  setInterval(function(){
+                        var date = new Date();
+                        var minutes = date.getMinutes();
+                        var day = date.getDate();
+                        var month = date.getMonth()+1;
+                        var year = date.getFullYear();
+                        var hours = date.getHours();
+                        var seconds = date.getSeconds();
+                        console.log(`${hours}:${minutes}:${seconds} / ${day}/${month}/${year}`);
+                    }, 1000);
+		var refreshIntervalId = setInterval(fname, 10000);
+		clearInterval(refreshIntervalId);
+- method include kiểm tra xem phần tử trong mảng hoặc chuỗi xem có tồn tại hay ko, trả về giá trị true/false:
+        + var name = "quyen quyet tam"
+        + ví dụ: console.log(nameincludes("quyet"));
+        + ví dụ: console.log(name.includes("tam", 1));  -> số 1 là vị trí bắt đầu tìm kiếm
+- callback:
+        + là hàm 
+        + Được truyên qua đối số
+        + Được gọi lại trong hàm nhận đối số
+
+- DOM:
+	- Đối tượng Element:
+        	Tạo đối tượng:
+			+ var element = document.createElement("p");	=> parameter là tag hoặc element
+                	+ document.write('dsfadsf');
+                	+ var element = document.getElementById("object") -> select 1 thẻ theo id, chỉ đc 1 thẻ.
+               	 	+ var element = document.getElementsByClassName("asdfsd"); -> select thẻ theo class, có thể đc nhiều thẻ.
+               	 	+ var element = document.getElementsByTagName("h1"); -> select thẻ theo tên thẻ h1, có thể đc nhiều thẻ.
+               		+ var element = document.querySelector("classname"); -> select 1 thẻ theo kiểu giống select css
+                	+ var element = document.querySelectorAll("classname"); -> select 1 hoặc nhiều thẻ theo kiểu giống select css
+                	+ var element = document.forms; -> select nhiều thẻ
+                	+ var element = document.forms.formName; -> select 1 thẻ from qua tên id, nếu tên id theo đúng cú pháp đặt tên biếns
+                	+ var element = document.forms[form-1]; -> select 1 thẻ from qua tên id, mà tên id ko theo đúng cú pháp
+                	+ var element = document.anchors; -> trả về tất cả các thẻ a có attibute name
+                		=> chú ý là chỉ có getElementById và querySelector mới trả về thẻ 
+                		=> các select còn lại trả về array thẻ
+			
+        	Property:
+			.class = "header__nav"                  => cho phép tạo 1 attribute hợp lệ
+			.classList				=> array class
+			.classList.add('blue','red', 'green');	=> thêm 1 hoăc nhiều class
+			.classList.remove('blue','red');	=> xóa 1 hoặc nhiều class
+			.innerText = "xin chao";		=> thêm nội dung cho element: <p>nội dung</p>
+			.textContent = "xin chao";		=> đặt text cho element
+			.innerHTML = "<h1 class="header">chao</h1>"     => thêm nội dung cho element: <p>nội dung</p>
+			.outerHTML = "<h1 class="header">chao</h1>"     => Thêm thẻ html đè vào thẻ đc select. và xóa thẻ đc select.
+		Method:
+			.remove();				=> xóa element ở trong html
+			.setAttribute("class","header");   	=> cho phép tạo 1 attribute không hợp lệ
+                        .getAttribute("class");                	=> lấy giá trị của attribute (class)
+			.appendChild(text_hoặc_element);	=> thêm nội dung cho element
+			.createTextNode("Tutorix is..");	=> trả vê chuỗi kiểu Text
+			.classList.toggle('blue');   		=> thêm class nếu chưa có, và xóa class nếu đã có
+			.addEventListener("keydown",function(event){//code});	=> thêm event
+                + sự khác nhau giữa innerText và innerText: 
+                        -> innerText thì cho kết quả giống những gì nhìn thấy trên màn hình chỉ sử dụng trên element node
+                        -> textContent thì cho kết quả trong giống trong tag node, in ra cả thuộc tính css, sử dụng cho tag node và element node
+
+- event:       
+        -> https://www.w3schools.com/jsref/dom_obj_event.asp
+        -> cách thêm attribute: on + event
+        -> ví vụ event click thì ta có: onclick; -> <h1 onclick="console.log('đã click')">click vào đây</h1>
+        -> thêm event từ js: a.onclick = function(e) {
+                console.log(e.target)
+        }
+        -> e.target -> trả về element chính nó
+        -> ngăn chặn hàng vi mặc định: e.preventDefault(); -> ví dụ: nếu gắn lệnh vào thẻ a thì sẽ ngăn chặn hành vi chuyển trang
+        -> ngăn chặn event nổi bọt: e.stopPropagation();
+- auto click: a.dispatchEvent(new MouseEvent("click"));
+- JSON:
+        - là 1 định dạng dữ liệu
+	- trong 1 file .json thì là 1 mảng hoặc 1 object
+- Promise:
+	- đồng bộ và bất đồng bộ
+	- 
+- var url = "a.txt";
+    fetch(url).then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+    })
+    .catch(function(){				=> nếu thất bại thì nó sẽ chạy vào hàm catch
+	
+    });
+
+các loại sự kiện:
+	click			=> khi click chuột
+	keydown			=> khi bấm bàn phím
+		event.key	=> lấy phím đã bấm
+
+
+svg:
+	viewBox="0 0 700 550"	=> thuộc tính trên thẻ svg,"0 0 width height" các ảnh đồ họa sẽ dựa theo trục tọa độ trong khung này
+	width="100"		=> chiều ngang hiện thị lên màn hình
+	heith="100"		=> chiều dọc hiện thị lên màn hình
+	- tọa độ vẽ x=0 y=0 ở trên góc trái màn hinh
+	- có thể khai báo thuộc tính trong style=""
+	- fill:none			=> ko tô màu
+	- transform="rotate(30 20,40)"	=> transform="rotate(độ nghiên, y,x)"	căn theo trục y,x và độ nghiên
+	thẻ <g></g>			=> bao bọc các thẻ svg con
+		các thuộc tính được sử dụng cho tất cả thẻ con
+		
+	thẻ <svg></svg>:		=> khai báo svg
+		width="100"		=> chiều ngang
+		heith="100"		=> chiều dọc
+	thẻ <circle/>			=> vẽ hình tròn
+		cy="50"			=> xác định tâm hình tròn theo trục y so với height của svg
+		cx="50"			=> xác định tâm hình tròn theo trục x so với width của svg
+		r="40"			=> bán kính hình tròn
+		stroke="green"		=> màu viền
+		stroke-width="4"	=> chiều rộng viền
+		fill="yellow"		=> màu nền của hình
+		fill-opacity="0.1"	=> độ mờ
+	thẻ <rect/> 			=> vẽ hình chữ nhật
+		x=0			=> tọa độ bắt đầu vẽ, so với trục x thẻ svg
+		y=0			=> tọa độ bắt đầu vẽ, so với trục y thẻ svg
+		rx="20"			=> bo góc theo trục x
+		ry="20"			=> bo góc theo trục y
+		width="300"		=> chiều ngang hình chữ nhật
+		height="300"		=> chiều cao hình chữ nhật	
+		stroke="green"		=> màu viền
+		stroke-width="4"	=> chiều rộng viền
+		fill="yellow"		=> màu nền của hình
+		fill-opacity="0.1"	=> độ mờ
+	thẻ <ellipse/>
+		cy="50"			=> xác định tâm hình ellipse theo trục y so với height của svg
+		cx="50"			=> xác định tâm hình ellipse theo trục x so với width của svg
+		rx="20"			=> bo góc theo trục x
+		ry="20"			=> bo góc theo trục y
+	thẻ <line/>			=> vẽ đường thẳng
+		x1="0" y1="0"		=> tọa độ trục x y đầu đoạn thẳng
+		x2="200" y2="200"	=> tọa độ trục x y cuối đoạn thẳng
+		stroke="green"		=> màu viền
+		stroke-width="4"	=> chiều rộng viền
+	thẻ <polygon/>			=> vẽ hình đa giác
+		points="200,10 250,190 160,210"	=> các điểm vẽ của hình đa giác theo trục x,y. điểm đầu cuối tự nối với nhau
+		fill, stroke, stroke-width	=> sở hữu 1 số thuộc tính của hình chữ nhật
+		fill-rule:evenodd;		=> chỉ tô màu vùng có points
+		fill-rule:nonzero;		=> tô màu toàn bộ vùng trong hình
+	thẻ <polyline/>			=> vẽ đường thẳng nối đa điểm, điểm đầu và điểm cuối không nối với nhau
+		thuộc tính giống thẻ polygon
+	thẻ <path/>
+		d="M150 0 L75 200 L225 200 Z"	=> d là đường thẳng sẽ vẽ
+		chữ in là điểm vẽ dựa trên trục xy theo màn hình
+		chữ thường là điểm vẽ dựa trên trục xy có gốc tọa độ là điểm đang đứng
+		M x y (moveto)khai báo điểm bắt đầu để vẽ, và là nơi nhận điểm kết thúc
+		L x y (line to)điểm sẽ vẽ tới
+		Z là vẽ trở lại điểm bắt đầu
+		Q X Y x y là đường cong Bézier bậc hai	=> khi tạo thành hình tam giác nó sẽ tự biến thành 1 đường cong
+	thẻ <text>I love SVG</text>
+		fill="red"			=> màu chữ
+		x="0"				=> tọa độ bắt đầu vẽ
+		y="15"				=> tọa độ tâm của text theo trục y
+	 thẻ <tspan></tspan>			=> nằm trong thẻ text, giống ul và li
+		sở hữu các thuộc tính giống thẻ text
+	thẻ <a> 				=> nằm bao ngoài thẻ text, giúp text biến thành link
+		xlink:href="url"		=> truy cập tới url
+		target="_blank"			=> tạo 1 tab mới khi truy cập
+	thẻ <defs></defs>			=> dùng chứa các phần tử đặc biệt như <filter>
+	thẻ <filter></filter>			=> nằm trong thẻ <defs>
+		 x="-100" y="-100"		=> tăng giới hạn khung ảnh, important
+		width="400" height="300"	=> tăng giới hạn khung ảnh, important
+		id="f1"				=> dùng để xác định bộ lọc, để thẻ đồ họa trỏ tới
+		=> filter="url(#f1)"		=> sử dụng thuộc tính filter trong thẻ đồ họa để gắn hiệu ứng filter
+		thẻ <feOffset />			=> dùng để tạo hiệu ứng đổ bóng, tạo 1 bản sao và di chuyển bản sao đó
+			dx="20"				=> di chuyển đồ họa theo trục x
+			dy="20"				=> di chuyển đồ họa theo trục y
+			in="SourceGraphic"		=> đổ màu giống bản đồ họa gốc
+			in="SourceAlpha"		=> đổ màu đen
+		thẻ <feBlend />				=> tạo lại bản gốc của đồ họa
+			in="SourceGraphic"		=> lấy thông tin hình ảnh của đồ họa, bắt buộc phải có
+		thẻ <feGaussianBlur />		=> làm mờ ảnh đồ họa gốc và các thẻ đứng trước nó
+			stdDeviation="10"		=> độ mờ
+		<feColorMatrix/>			=> thay đổi màu của ảnh đồ họa gốc và thẻ trước nó
+			values = "1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"	=> giá trị của từng phần tử dao động từ 0->1, số 0 hiện thị màu đen
+			"đỏ đỏ đen đỏ đỏ xanhlá xanhlá đen xanhlá xanhlá xanhtrời xanhtrời đen xanhtrời xanhtrời
+			đen đen đen opasity độmờ
+<defs>				giúp tô nhiều màu lên ảnh đồ họa, sử dụng fill="url(#id)"			
+    	<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"> 	=> x1,y1 vị trí bắt đầu tô màu x2,y2 vị trí kết thúc tô màu
+      		<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:0" />	=> khi tô sẽ duyệt lần lượt 2 thẻ stop
+      		<stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />	=> offset=50% là vị trí tô màu chính
+    	</linearGradient>
+  </defs>
+	<radialGradient>	=> sử dụng thay thẻ linearGradient, tô ngay điểm chỉ định ở trên ảnh đồ họa
+				=> 

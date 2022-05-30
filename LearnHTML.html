@@ -6,122 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    * {
-      margin: 0px;
-      padding: 0px;
-      box-sizing: border-box;
-      color: white;
-    }
-
-    .slogan {
-      padding: 20px;
-      border: 1px solid red;
-      text-align: center;
-      text-shadow: 2px 2px red;
-    }
-
-    header {
-      background-color: black;
-      border: 1px solid red;
-    }
-
-    header .nav-left li {
-      float: left;
-    }
-
-    .active {
-      background-color: red;
-    }
-    
-    header .nav-left {
-      list-style-type: none;
-      content: "";
-      clear: both;
-      display: table;
-    }
-
-    header .nav-left li {
-      float: left;
-    }
-
-    header .nav-left li a {
-      color: white;
-      display: block;
-      padding: 16px;
-      text-decoration: none;
-    }
-
-    header > .nav-left > li:hover > a {
-      background-color: red;
-    }
-
-    header > .nav-left > li:hover > .nav-sub {
-      display: block;
-    }
-
-    header .nav-sub {
-      position: absolute;
-      background-color: black;
-      list-style-type: none;
-      display: none;
-      border: 1px solid red;
-    }
-
-    header .nav-sub li {
-      width: 100%;
-    }
-
-    header .nav-sub li:hover a {
-      background-color: red;
-    }
-
-    main {
-      display: flex;
-    }
-    main .column {
-      flex: 1;
-      background-color: black;
-      padding: 20px;
-      border: 1px solid red;
-    }
-    main .content-main {
-      flex: 6;
-      background-color: black;
-      padding: 20px;
-      border: 1px solid red;
-    }
-
-    main .content-navleft {
-      flex: 1;
-      background-color: black;
-      border: 1px solid red;
-    }
-
-    main .content-navleft .navleft li a {
-      color: white;
-      display: block;
-      text-decoration: none;
-      padding: 10px;
-      white-space: nowrap;
-    }
-
-    main .content-navleft .navleft li:hover a {
-      background-color: red;
-    }
-
-    footer {
-      background-color: black;
-      padding: 20px;
-      border: 1px solid red;
-    }
-
-    @media (max-width: 600px){
-      main {
-        flex-direction: column
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styleLearn.css">
 </head>
 <body>
   <header>
@@ -129,14 +14,13 @@
       Learning Font-End Web
     </h2>
     <ul class="nav-left">
-      <li><a class="active" href="LearnHTML.html">HTML</a></li>
-      <li><a href="LearnCSS.html">CSS</a></li>
-      <li><a href="LearnJS.html">JavaScripts</a></li>
+      <li><a class="Tab-List active" onclick="getCourse(event, 'LearnHTML')" href="#">HTML</a></li>
+      <li><a class="Tab-List" onclick="getCourse(event, 'LearnCSS')" href="#">CSS</a></li>
+      <li><a class="Tab-List" onclick="getCourse(event, 'LearnJS')" href="#">JavaScripts</a></li>
+      <li><a class="Tab-List" onclick="getCourse(event, 'LearnCSharp')" href="#">CSharp</a></li>
       <li style="position: relative;"><a href="#"> Contact <i class="fa-solid fa-caret-down"></i></a>
         <ul class="nav-sub">
           <li><a href="https://www.facebook.com/quyet1702" target="_blank">facebook</a></li>
-          <li><a href="test.html">link 2</a></li>
-          <li><a href="test.html">link 2</a></li>
           <li><a href="test.html">link 2</a></li>
           <li><a href="test.html">link 2</a></li>
         </ul>
@@ -152,13 +36,38 @@
         <li><a href="test.html">Session 4</a></li>
       </ul>
     </div>
-    <div class="content-main">
+    <div id="LearnHTML" class="tabContent">
+      <iframe src="HTML.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
+    </div>
+    <div id="LearnCSS" class="tabContent" style="display: none;">
+      <iframe src="css.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
+    </div>
+    <div id="LearnJS" class="tabContent" style="display: none;">
+      <iframe src="js.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
+    </div>
+    <div id="LearnCSharp" class="tabContent" style="display: none;">
       <iframe src="cSharp.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
     </div>
-    <div class="column"></div>
   </main>
   <footer style="text-align: center;">
     <p>Contact: quyet1702@gmail.com</p>
   </footer>
 </body>
 </html>
+<script>
+  function getCourse(event, id){
+    var tablinks = document.getElementsByClassName("Tab-List");
+    var listContent = document.getElementsByClassName("tabContent");
+    
+    for(var i=0;i <listContent.length; i++){
+      
+      listContent[i].style.display="none";
+    }
+    for(var i=0;i <listContent.length; i++){
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    };
+    document.getElementById(id).style.display="block";
+    event.currentTarget.classList.add("active");
+  }
+ 
+</script>
