@@ -83,6 +83,10 @@ main .content-navleft {
   border: 1px solid red;
 }
 
+main .content-navleft .navleft {
+    list-style-type: none;
+}
+
 main .content-navleft .navleft li a {
   color: white;
   display: block;
