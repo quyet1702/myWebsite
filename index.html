@@ -5,13 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styleLearn.css"/>
 </head>
 <body>
   <header>
     <h2 class="slogan">
-      Learning Font-End Web
+      Learning Front-End Web
     </h2>
     <ul class="nav-left">
       <li><a class="Tab-List active" onclick="getCourse(event, 'LearnHTML')" href="#">HTML</a></li>
@@ -23,37 +22,62 @@
       <li style="position: relative;"><a href="#"> Contact <i class="fa-solid fa-caret-down"></i></a>
         <ul class="nav-sub">
           <li><a href="https://www.facebook.com/quyet1702" target="_blank">facebook</a></li>
-          <li><a href="test.html">link 2</a></li>
-          <li><a href="test.html">link 2</a></li>
+          <li><a href="">link 2</a></li>
+          <li><a href="">link 2</a></li>
         </ul>
       </li>
     </ul>
   </header>
   <main>
     <div class="content-navleft">
-      <ul class="navleft">
+      <ul id="LearnHTML" class="navleft" style="display: block;">
         <li><a class="active" href="">Session 1</a></li>
-        <li><a href="test.html">Session 2</a></li>
-        <li><a href="test.html">Session 3</a></li>
-        <li><a href="test.html">Session 4</a></li>
+        <li><a href="">Session 21</a></li>
+      </ul>
+      <ul id="LearnCSS" class="navleft">
+        <li><a class="active" href="">Session 1</a></li>
+        <li><a href="">Session 2</a></li>
+      </ul>
+      <ul id="LearnJS" class="navleft">
+        <li><a class="active" href="">Session 1</a></li>
+        <li><a href="">Session 2</a></li>
+      </ul>
+      <ul id="LearnCSharp" class="navleft">
+        <li><a class="active" href="">Session 1</a></li>
+        <li><a href="">Session 2</a></li>
+      </ul>
+      <ul id="LearnEnglish" class="navleft">
+        <li><a class="active" href="">Session 1</a></li>
+        <li><a href="">Session 2</a></li>
+      </ul>
+      <ul id="Media" class="navleft">
+        <li><a class="Media-List active" href="#" onclick="getSession(event, 'Media1')">Tập 1</a></li>
+        <li><a class="Media-List" href="#" onclick="getSession(event, 'Media328')">Tập 328</a></li>
+        <li><a class="Media-List" href="#" onclick="getSession(event, 'Media428')">Tập 428</a></li>
       </ul>
     </div>
-    <div id="LearnHTML" class="tabContent">
+    <div class="tabContent">
       <iframe src="HTML.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
     </div>
-    <div id="LearnCSS" class="tabContent" style="display: none;">
+    <div class="tabContent" style="display: none;">
       <iframe src="css.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
     </div>
-    <div id="LearnJS" class="tabContent" style="display: none;">
+    <div class="tabContent" style="display: none;">
       <iframe src="js.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
     </div>
-    <div id="LearnCSharp" class="tabContent" style="display: none;">
+    <div class="tabContent" style="display: none;">
       <iframe src="cSharp.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
     </div>
-    <div id="LearnEnglish" class="tabContent" style="display: none;">
+    <div class="tabContent" style="display: none;">
       <iframe src="English.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 50vh;" title="description" width="500px"></iframe>
     </div>
-    <div id="Media" class="tabContent" style="display: none;">
+    <div id="Media328" class="tabContent" style="display: none;">
+      <video width="100%" height="100%" controls>
+        <source src="https://r2---sn-8qj-nboz7.googlevideo.com/videoplayback?expire=1654102010&ei=mUOXYoHAM9P62roPuZquwAk&ip=113.185.50.187&id=o-AK8trvy75XUPVAczK6mYhUK2kA2wFMu5Mt7bzS8G6Zfy&itag=137&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C278%2C394%2C395%2C396%2C397%2C398%2C399&source=youtube&requiressl=yes&gcr=vn&spc=4ocVCxQHkOUfDWcFpzpRXpi4-0E5&vprv=1&mime=video%2Fmp4&ns=cvGOJ2ysJMgFc3lmonAUWrcG&gir=yes&clen=124605031&dur=1304.880&lmt=1602741179023995&keepalive=yes&fexp=24001373%2C24007246&c=WEB&txp=5535432&n=LNH95ek8Mg7G1UVHt2l0&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cgcr%2Cspc%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRQIgavC-011xhgevl13cWTsdA1NR81ObJpwQY21PkcF57MUCIQDNioS_PEA-B1RpOa61nlcjN7HSGT1ynKMSNGTaU0wlJg%3D%3D&title=%5BS7%5D%2BDoraemon%2BT%E1%BA%ADp%2B328%2B-%2BH%C3%A0nh%2BTinh%2BNg%C6%B0%E1%BB%A3c%2B%C4%90%E1%BB%9Di&cms_redirect=yes&mh=bt&mip=2001:ee0:5267:33e0:5d9:e87:f314:6987&mm=31&mn=sn-8qj-nboz7&ms=au&mt=1654080064&mv=m&mvi=2&pl=46&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRAIgHeZCth6SQ2BlC76hNCcYbF8hIayyg_qTtU3VCEyecpsCIGyk1JrmQ3DWEjHiCQsA6LSvYj_5GnW5ENSAoPD1S4bN" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="Media428" class="tabContent" style="display: none;">
       <video width="100%" height="100%" controls>
         <source src="https://r1---sn-8qj-nboz7.googlevideo.com/videoplayback?expire=1654081369&ei=-PKWYsyvOaOPvcAP1KGp8Ao&ip=113.185.51.10&id=o-AGVK6DDxC-8ejshVKKp7IdXG9ZFyJKTShc3yxr0TZaL8&itag=18&source=youtube&requiressl=yes&gcr=vn&spc=4ocVC_BJznA6afHnohHwHkXIJMh5&vprv=1&mime=video%2Fmp4&ns=VDE-bDEZnAW6bVtq00fULzoG&gir=yes&clen=78445390&ratebypass=yes&dur=1533.422&lmt=1653978660270205&fexp=24001373%2C24007246&c=WEB&txp=5538434&n=hSusqTZuHgqDIFyM_Yzs&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cgcr%2Cspc%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIgS2mm5RqQnvMHgGGL9xgSuDm6jYd19ZEOma-Y3uwWe2ECIQC4GjPbXBG6YkOCc-hQds2qipgkivU_0I6O3zG6GS9mNg%3D%3D&title=%5BS9%5D%2BDoraemon%2B-%2BT%E1%BA%ADp%2B428%2B-%2BBi%E1%BA%BFn%2BTh%C3%A0nh%2BNg%C6%B0%E1%BB%9Di%2BKh%C3%A1c%2B-%2BQu%C3%A0%2BSinh%2BNh%E1%BA%ADt%2BCho%2BShizuka%2B-%2BHo%E1%BA%A1t%2BH%C3%ACnh%2BTi%E1%BA%BFng%2BVi%E1%BB%87t&cms_redirect=yes&mh=lm&mip=2001:ee0:5267:33e0:5d9:e87:f314:6987&mm=31&mn=sn-8qj-nboz7&ms=au&mt=1654059665&mv=m&mvi=1&pcm2cms=yes&pl=46&lsparams=mh,mip,mm,mn,ms,mv,mvi,pcm2cms,pl&lsig=AG3C_xAwRAIgONoJ6LQEtwQQgocRJDIWwzRj6Nkn3s2TnnZrZovLoDYCIBWyWo3GO2_bLy3i-GmzgN9TTFv40o2zD3dCsXD0soNy" type="video/mp4">
       Your browser does not support the video tag.
@@ -68,7 +92,7 @@
 <script>
   function getCourse(event, id){
     var tablinks = document.getElementsByClassName("Tab-List");
-    var listContent = document.getElementsByClassName("tabContent");
+    var listContent = document.getElementsByClassName("navleft");
     
     for(var i=0;i <listContent.length; i++){
       
@@ -79,6 +103,20 @@
     };
     document.getElementById(id).style.display="block";
     event.currentTarget.classList.add("active");
+  }
+  function getSession(event, id){
+    var tablinks = document.getElementsByClassName("Media-List");
+    for(var i=0;i <tablinks.length; i++){
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    };
+    event.currentTarget.classList.add("active");
+    var listContent = document.getElementsByClassName("tabContent");
+
+    for(var i=0;i <listContent.length; i++){
+      
+      listContent[i].style.display="none";
+    }
+    document.getElementById(id).style.display="block";
   }
  
 </script>

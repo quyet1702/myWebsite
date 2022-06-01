@@ -73,7 +73,7 @@ main {
 main > div {
   flex: 6;
   background-color: black;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid red;
 }
 
@@ -85,6 +85,7 @@ main .content-navleft {
 
 main .content-navleft .navleft {
     list-style-type: none;
+    display: none;
 }
 
 main .content-navleft .navleft li a {
