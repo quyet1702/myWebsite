@@ -53,6 +53,7 @@
       <ul id="Media" class="navleft">
         <li><a class="Media-List" href="#" onclick="getSession(event, 'Media1')">Tập 1</a></li>
         <li><a class="Media-List" href="#" onclick="getSession(event, 'Media428')">Tập 428</a></li>
+        <li><a class="Media-List" href="#" onclick="getSession(event, 'LiveStream')">LiveStream</a></li>
       </ul>
     </div>
     <div class="tabContent">
@@ -78,6 +79,12 @@
     </div>
     <div id="Media428" class="tabContent" style="display: none;">
       <video width="100%" controls>
+        <source src="doremon428.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="LiveStream" class="tabContent" style="display: none;">
+      <video id="LiveStream1" width="100%" controls>
         <source src="doremon428.mp4" type="video/mp4">
       Your browser does not support the video tag.
       </video>
@@ -124,4 +131,16 @@
     document.getElementById(id).style.display="block";
   }
  
+
+  var imageCapture;
+
+navigator.mediaDevices.getUserMedia({video: true})
+.then(mediaStream => {
+  document.getElementById('LiveStream1').srcObject = mediaStream;
+
+  const track = mediaStream.getVideoTracks()[0];
+  imageCapture = new ImageCapture(track);
+
+  return imageCapture.getPhotoCapabilities();
+})
 </script>
