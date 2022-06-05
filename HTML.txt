@@ -1,1 +1,37 @@
-Chưa có gì
+Tổng quan:
+	- Thẻ html
+	- Attribute
+	- Html DOM
+		event
+Thẻ html:
+	<a></a>
+	<abbr title="xin chao">Who</abbr>			=> xuất hiện text title khi hover vào thẻ
+	<address></address>
+	<input list="browsers">					=> thuộc tính list của input phải = id của datalist
+  	<datalist id="browsers">
+    		<option value="Edge">
+    		<option value="Firefox">
+    		<option value="Chrome">
+    		<option value="Opera">
+    		<option value="Safari">
+  	</datalist>
+	<data value="23">xin chao</data>			
+	<p></p>
+	<h1></h1>....<h6></h6>
+
+
+
+
+các ví dụ:
+	Tạo toggle:
+		<details ontoggle="myFunction()">
+			<summary>Copyright 1999-2014.</summary>
+			<p> - by Refsnes Data. All Rights Reserved.</p>
+			<p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+		</details>
+
+		<script>
+			function myFunction() {
+				alert("The ontoggle event occured");
+			}
+		</script>
