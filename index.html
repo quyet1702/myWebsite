@@ -76,13 +76,13 @@
     </div>
     <div id="Media1" class="tabContent" style="display: none;">
       <video id="videoMedia1" width="100%" controls>
-        <source type="video/mp4">
+        <source src="Doremon1.mp4" type="video/mp4">
       Your browser does not support the video tag.
       </video>
     </div>
     <div id="Media428" class="tabContent" style="display: none;">
       <video width="100%" controls>
-        <source src="doremon428.mp4" type="video/mp4">
+        <source src="Doremon428.mp4" type="video/mp4">
       Your browser does not support the video tag.
       </video>
     </div>
@@ -161,8 +161,8 @@ document.getElementById("live").addEventListener("click",e => {
   })
 });
 
-
-var xhttp = new XMLHttpRequest();
+var a = new Promise(function(Resolve){
+  var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("videoMedia1").src =
@@ -170,5 +170,14 @@ var xhttp = new XMLHttpRequest();
     }
   };
   xhttp.open("GET", "Doremon1.mp4", true);
-  xhttp.send("Doremon1.mp4");
+    Resolve(xhttp);
+    value.send("Doremon11.mp4");
+  });
+  a.then(function(){
+    var videoMedia1 = document.getElementById("videoMedia1");
+    videoMedia1.innerHTML = videoMedia1.innerHTML.concat('<source src="Doremon11.mp4" type="video/mp4">');
+    alert("finish");
+  })
+
+  
 </script>
