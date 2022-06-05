@@ -77,7 +77,6 @@
     <div id="Media1" class="tabContent" style="display: none;">
       <video id="videoMedia1" width="100%" controls>
         <source src="Doremon1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
       </video>
     </div>
     <div id="Media428" class="tabContent" style="display: none;">
@@ -137,6 +136,7 @@
     }
     document.querySelectorAll("video").forEach(function(value){
       value.pause();
+      
     });
     if(getLive!=null){
       getLive.stop();
@@ -163,15 +163,20 @@ document.getElementById("live").addEventListener("click",e => {
 
 var a = new Promise(function(Resolve){
   var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
+  xhttp.ontimeout = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("videoMedia1").src =
       this.responseURL;
     }
   };
   xhttp.open("GET", "Doremon1.mp4", true);
+  xhttp.send("Doremon11.mp4");
     Resolve(xhttp);
   });
+  a.then(function(value){
+    var video = document.getElementById("videoMedia1");
+    video.innerHTML = video.innerHTML.concat('<source src="Doremon11.mp4" type="video/mp4">');
+});
 
   
 </script>
