@@ -171,13 +171,7 @@ var a = new Promise(function(Resolve){
   };
   xhttp.open("GET", "Doremon1.mp4", true);
     Resolve(xhttp);
-    value.send("Doremon11.mp4");
   });
-  a.then(function(){
-    var videoMedia1 = document.getElementById("videoMedia1");
-    videoMedia1.innerHTML = videoMedia1.innerHTML.concat('<source src="Doremon11.mp4" type="video/mp4">');
-    alert("finish");
-  })
 
   
 </script>
