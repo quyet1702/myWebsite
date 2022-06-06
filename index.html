@@ -161,22 +161,5 @@ document.getElementById("live").addEventListener("click",e => {
   })
 });
 
-var a = new Promise(function(Resolve){
-  var xhttp = new XMLHttpRequest();
-  xhttp.ontimeout = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("videoMedia1").src =
-      this.responseURL;
-    }
-  };
-  xhttp.open("GET", "Doremon1.mp4", true);
-  xhttp.send("Doremon11.mp4");
-    Resolve(xhttp);
-  });
-  a.then(function(value){
-    var video = document.getElementById("videoMedia1");
-    video.innerHTML = video.innerHTML.concat('<source src="Doremon11.mp4" type="video/mp4">');
-});
-
   
 </script>
