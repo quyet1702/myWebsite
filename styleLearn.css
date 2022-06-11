@@ -58,6 +58,7 @@ nav .nav-sub {
   list-style-type: none;
   display: none;
   border: 1px solid red;
+  z-index: 1;
 }
 
 header .nav-sub li {

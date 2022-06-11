@@ -19,13 +19,12 @@
         <li><a class="Tab-List" onclick="getCourse(event, 'LearnJS')" href="#">JavaScripts</a></li>
         <li><a class="Tab-List" onclick="getCourse(event, 'LearnCSharp')" href="#">CSharp</a></li>
         <li><a class="Tab-List" onclick="getCourse(event, 'LearnEnglish')" href="#">English</a></li>
-        <li><a class="Tab-List" onclick="getCourse(event, 'Media')" href="#">Doraemon</a></li>
         <li style="position: relative;">
-          <a href="#"> Contact 
+          <a href="#"> Media 
             <i class="fa-solid fa-caret-down"></i>
           </a>
           <ul class="nav-sub">
-            <li><a href="https://www.facebook.com/quyet1702" target="_blank">facebook</a></li>
+            <li><a class="Tab-List" onclick="getCourse(event, 'Media')" href="#">Doraemon</a></li>
             <li><a href="#">link 2</a></li>
             <li><a href="#">link 2</a></li>
           </ul>
@@ -44,16 +43,14 @@
         <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Css2')">Navbar</a></li>
       </ul>
       <ul id="LearnJS" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'JS1')">Session 1</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Session 2</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'JS1')">JavaScripts 1</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'JS2')">JavaScripts 2</a></li>
       </ul>
       <ul id="LearnCSharp" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Session 1</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Session 2</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'CSharp1')">C# 1</a></li>
       </ul>
       <ul id="LearnEnglish" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Session 1</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Session 2</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'English1')">English 1</a></li>
       </ul>
       <ul id="Media" class="navleft">
         <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Tập 1</a></li>
@@ -77,11 +74,14 @@
     <div id="JS1" class="tabContent" style="display: none;">
       <iframe src="LearnJS/js.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
     </div>
-    <div class="tabContent" style="display: none;">
-      <iframe src="cSharp.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
+    <div id="JS2" class="tabContent" style="display: none;">
+      <iframe src="LearnJS/js2.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
     </div>
-    <div class="tabContent" style="display: none;">
-      <iframe src="English.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
+    <div id="CSharp1" class="tabContent" style="display: none;">
+      <iframe src="LearnCSharp/CSharp1.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
+    </div>
+    <div id="English1" class="tabContent" style="display: none;">
+      <iframe src="LearnEnglish/English1.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
     </div>
     <div id="Media1" class="tabContent" style="display: none;">
       <video id="videoMedia1" width="100%" controls>
@@ -110,25 +110,33 @@
   
  var getLive=null;
   function getCourse(event, id){
+
+    //begin: toggle active
     var tablinks = document.getElementsByClassName("Tab-List");
-    var listContent = document.getElementsByClassName("navleft");
-    
-    for(var i=0;i <listContent.length; i++){
-      
-      listContent[i].style.display="none";
-    }
-    for(var i=0;i <listContent.length; i++){
+    for(var i=0;i <tablinks.length; i++){
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     };
+    event.currentTarget.classList.add("active");
+    //end: toggle active
+
+    //Begin: get NavLeft
+    var listContent = document.getElementsByClassName("navleft");
+    for(var i=0;i <listContent.length; i++){
+      listContent[i].style.display="none";
+    }
+    document.getElementById(id).style.display="block";
+    //End: get NavLeft
+
+
+    //begin: stop all video are runing
     document.querySelectorAll("video").forEach(function(value){
       value.pause();
     });
     if(getLive!=null){
       getLive.stop();
     }
-    
-    document.getElementById(id).style.display="block";
-    event.currentTarget.classList.add("active");
+    //end: stop all video are runing
+
   }
   function setNavLeftItem(event, id){
     var tablinks = document.getElementsByClassName("navleft-item");
