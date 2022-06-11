@@ -1,0 +1,8 @@
+header
+    nav                 => điều chỉnh layout
+        toggle          => toggle main nav
+        main nav        => <div> điều chỉnh layout
+            search
+            ul li a
+                dropdown      
+        ul li a           => nav right

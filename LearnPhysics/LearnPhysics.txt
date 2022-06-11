@@ -1,0 +1,43 @@
+Chuyển động tròn đều:
+	chuyển động tròn là chuyển động có quỹ đạo là 1 đường tròn
+	Chuyển động tròn đều là chuyển động tròn có tốc độ ko đổi
+	Δs 		độ dài của quỹ đạo
+	Δt 		thời gian vật đi được 1 quỹ đạo
+	r 		bán kính quỹ đạo
+	v = Δs/Δt = ωr	là vận tốc di chuyển
+	Δα 		là góc mà bán kính nối từ tâm đến vật quét được trong thời gian Δt
+	ω = Δa/Δt	Tốc độ góc là đại lượng đo bằng góc mà bán kính OM quét được trong một đơn vị thời gian
+	T =2π/ω		Chu kì (T) là thời gian để vật đi được một vòng
+	f=1/T		Tần số là số vòng đi được trong 1 giây (vòng /s hoặc hec (Hz))
+	aht = v2/r=rω2	gia tốc hướng tâm là gia tốc luôn hướng vào tâm
+	
+		
+
+Xem thêm tại: https://loigiaihay.com/ly-thuyet-chuyen-dong-tron-deu-c61a7120.html#ixzz7VnZIjyaD
+
+Dao động cơ:
+	chuyển động qua lại quanh một vị trí cân bằng
+	ví dụ: con lắc đồng hồ
+		Vị trí cân bằng: là vị trí khi con lắc đứng im không chạy
+Dao động tuần hoàn:
+	là dao động cơ mà sau những khoảng thời gian bằng nhau vật trở lại vị trí cũ theo hướng cũ
+	con lắc chạy đc 1 vòng thì gọi là 1 chu kỳ (T) = 1 dao động toàn phần
+	1s con lắc chạy đc bao nhiêu vòng thì đó là tần số (f)
+	Số dao động toàn phần vật thực hiện được trong 1s là T = 1/f
+Dao động điều hòa:
+	là dao động trong đó li độ là 1 hàm cosin hoặc sin của thời gian
+	công thức: x = A cos⁡(ωt + φ)
+		x: Li độ của vật. tức là vị trí từ -A đến A
+		A: Biên độ của vật ( giá trị lớn nhất của li độ).
+		ω: tốc độ góc trong chuyển động tròn đều hay tần số góc trong dao động điều hòa.
+			
+		ωt + φ: pha dao động tại thời điểm t
+		φ: pha ban đầu ( pha dao động tại thời điểm ban đầu).
+	vận tốc:  v = x' = -Aω sin⁡(ωt + φ) = ωA cos⁡(ωt + φ + π/2)
+		vmax = ωA
+	Tốc độ góc: ω=2π/T =2πf
+	Gia tốc: a = v' = x"= -ω2A = -ω2 A cos⁡(ωt + φ) = ω2 A cos⁡(ωt+φ + π)
+		amax = ω2 A
+		 x = ±A; a = 0
+	Tần số: f = ω/2π
+	Chu kỳ:	T = 2π/ω

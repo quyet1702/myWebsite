@@ -1,0 +1,24 @@
+Layout:
+    header
+        nav
+    main
+        column 1
+            nav
+                ul li
+                .......
+            .........
+        column 2
+        column 3
+        ........
+    footer
+- quy tắc:
+    1/ Không set width height cho thẻ cha; chỉ set padding, line-height thẻ con trong cùng để giúp thẻ cha to lên
+    2/ Khi thẻ cha bị set width height; set width height với giá trị % để lấp đầy thẻ cha
+    3/ Từ khung Layout ở trên, có thể thêm container,... để điều chỉnh layout
+    4/ Chỉ nên sử dụng flex thuận tiện responsive; hạn chế sử dụng float, kể cả trường hợp đơn giản
+- Các bước tạo Layout:
+    bước 1: reset html * { padding: 0px; margin: 0px; box-sizing: border-box;
+    bước 2: Tạo thẻ khung header; main: column 1,2,3...; footer;
+    bước 3: css thẻ khung với padding, background để kiểm tra
+    bước 4: css thẻ main với display: flex
+    bước 5: responsive

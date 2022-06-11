@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: "Lato", sans-serif;
+    }
+    a {
+        text-decoration: none;
+        font-size: 15px;
+    }
+    p{
+        font-size: 15px;
+    }
+    ul{
+        list-style-type: none;
+    }
+    header {
+        background-color: black;
+        height: 46px;
+        z-index: 1000;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        top: 0px;
+    }
+
+    header > nav > ul {
+        display: flex;
+    }
+
+    header > nav > ul > li {
+        position: relative;
+    }
+
+
+    header >nav >ul >li > a {
+        color: white;
+        display: block;
+        line-height: 46.5px;
+        padding: 0px 24px;
+        text-transform: uppercase;
+    }
+
+    header nav ul li a i{
+        vertical-align:3px;
+    }
+
+    header > nav > ul > li:hover > a{
+        background-color: #ccc;
+        color: black;
+    }
+
+    header > nav > ul > li:hover > .nav-sub{
+        display: block;
+    }
+
+    header nav ul li .nav-sub{
+        display: none;
+        position: absolute;
+        background-color: white;
+        box-shadow: 0px 0px 1px;
+        z-index: 1000;
+    }
+
+    .nav-sub li a{
+        display: block;
+        color: black;
+        padding: 12px 14px;
+    }
+
+    .nav-sub li:hover a{
+        background-color: #ccc;
+    }
+
+    .search-btn {
+        color: white;
+        padding: 0px 24px;
+        line-height: 46.5px;
+        cursor: pointer;
+    }
+
+    .search-btn:hover {
+        background-color: red;
+    }
+
+    main {
+        margin-top: 46px;
+    }
+
+    main .slide {
+        position: relative;
+    }
+
+    main .slide-text {
+        width: 100%;
+        text-align: center;
+        bottom: 30px;
+        position: absolute;
+        color: white;
+    }
+
+    main .slide-text h2 {
+        font-weight: 300;
+    }
+
+    main .slide-text p {
+        margin-top: 30px;
+    }
+
+    .container {
+        padding: 46px;
+        width: 70%;
+        margin: auto;
+    }
+
+    h2{
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 30px;
+        font-family: "Segoe UI",Arial,sans-serif;
+        letter-spacing: 5px;
+        text-align: center;
+        margin: 26px;
+    }
+
+    p.description {
+        font-style: italic;
+        text-align: center;
+        opacity: 0.6;
+        margin: 24px;
+    }
+
+    p.letter {
+        text-align: justify;
+        line-height: 1.5;
+        margin: 20px;
+    }
+
+    main .brand{
+        text-align: center;
+        padding: 45px 0px;
+    }
+
+    .member-list{
+        display: flex;
+    }
+
+    .member-item {
+        flex-grow: 1;
+    }
+    .member-item p{
+        padding: 20px;
+    }
+
+    .member-item img {
+        width: 60%;
+    }
+
+    .tour-dark{
+        background-color: black;
+        text-align: center;
+    }
+    .tour-dark .container h2 {
+        color: white;
+    }
+
+    .tour-dark .container p {
+        color: white;
+    }
+
+    .ticktes-list {
+        background-color: white;
+    }
+
+    .ticktes-list li{
+        text-align: left;
+        padding: 6px 8px;
+        border-bottom: 1px solid #ddd;
+    }
+    .sold-out {
+        background-color: #f44336!important;
+        padding: 4px 6px;
+        color: white;
+        
+        margin-left: 16px;
+    }
+
+    .quantity {
+        background-color: black;
+        padding: 2px 8px;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .place {
+        display: flex;
+        margin: 40px 0px;
+        justify-content: space-between;
+    }
+
+    .place-item {
+        width: 32%;
+    }
+
+    .place-img {
+        width: 100%;
+        display: block;
+    }
+    .place-info {
+        background-color: white;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .place-info p {
+        color: black !important;
+        text-align: left;
+    }
+
+    .place-info a {
+        color: white !important;
+        background-color: black;
+        display: inline-block;
+        padding: 8px 10px;
+        margin-top: 8px;
+    }
+
+    .place-title {
+        margin: 10px 0px;
+        font-weight: 600;
+    }
+
+    .contact-content {
+        display: flex;
+    }
+    .content-item {
+        flex: 1;
+    }
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 6px;
+        border: 1px solid #ccc;
+    }
+    .Name-input {
+        padding: 2px;
+        flex: 1;
+    }
+
+    .Email-input {
+        padding: 2px;
+        flex: 1; 
+    }
+
+    .Message-input {
+        width: 100%;
+    }
+</style>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Brand</a></li>
+                <li><a href="">Tour</a></li>
+                <li><a href="">Contact</a></li>
+                <li>
+                    <a href="">More <i class="fa-solid fa-sort-down"></i></a>
+                    <ul class="nav-sub">
+                        <li><a href="">Merchandise</a></li>
+                        <li><a href="">Extras</a></li>
+                        <li><a href="">Media</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </header>
+    <main>
+        <section class="slide">
+            <img src="la.jpg" alt="" width="100%">
+            <div class="slide-text">
+                <h2>Los Angeles</h2>
+                <p>We had the best time playing at Venice Beach!</p>
+            </div>
+        </section>
+        <section class="brand">
+            <div class="container">
+                <h2>The Band</h2>
+                <p class="description">We love music</p>
+                <p class="letter">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="member-list">
+                    <div class="member-item">
+                        <p>Name</p>
+                        <img src="bandmember.jpg" alt="">
+                    </div>
+                    <div class="member-item">
+                        <p>Name</p>
+                        <img src="bandmember.jpg" alt="">
+                    </div>
+                    <div class="member-item"> 
+                        <p>Name</p>
+                        <img src="bandmember.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="tour-dark">
+            <div class="container">
+
+                <h2>TOUR DATES</h2>
+                <p class="description">Remember to book your tickets!</p>
+                <ul class="ticktes-list">
+                    <li>September <span class="sold-out">Sold out</span></li>
+                    <li>October <span class="sold-out">Sold out</span></li>
+                    <li>November <span class="quantity">3</span></li>
+                </ul>
+                <div class="place">
+                    <div class="place-item">
+                        <img src="newyork.jpg" alt="" class="place-img">
+                        <div class="place-info">
+                            <p class="place-title">New York</p>
+                            <p>Fri 27 Nov 2016</p>
+                            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                            <a href="">Buy Tickets</a>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <img src="paris.jpg" alt="" class="place-img">
+                        <div class="place-info">
+                            <p class="place-title">Paris</p>
+                            <p>Sat 28 Nov 2016</p>
+                            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                            <a href="">Buy Tickets</a>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <img src="sanfran.jpg" alt="" class="place-img">
+                        <div class="place-info">
+                            <p class="place-title">San Francisco</p>
+                            <p>Sun 29 Nov 2016</p>
+                            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                            <a href="">Buy Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+            <h2>CONTACT</h2>
+            <p class="description">Fan? Drop a note!</p>
+            <div class="contact-content">
+                <div class="content-item">
+                    <ul>
+                        <li><span><i class="fa-solid fa-location-dot"></i></span> Chicago, US</li>
+                        <li><span><i class="fa-solid fa-phone"></i></span> Phone: +00 151515</li>
+                        <li><span><i class="fa-solid fa-envelope"></i></span> Email: mail@mail.com</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div class="Name-input" >
+                                <input type="text" placeholder="Name">
+                            </div>
+                            <div class="Email-input">
+                                <input type="text" placeholder="Email">
+                            </div>
+                        </div>
+                        <input class="Message-input" type="text" placeholder="Message">
+                    </div>
+                    <a href="#">Send</a>
+                </div>
+            </div>
+        </div>
+        </section>
+        <section>
+            <img src="map.jpg" alt="" width="100%">
+        </section>
+    </main>
+    <footer>
+        <div>
+            <i class="fa-brands fa-facebook-square"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-snapchat"></i>
+            <i class="fa-brands fa-pinterest-p"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-linkedin-in"></i>
+        </div>
+        <p>Powered by <a href="">w3.css</a></p>
+    </footer>
+</body>
+</html>

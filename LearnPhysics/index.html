@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <svg width="600px" height="500px" style="background-color: #ccc"	>
+        <circle cx="300" cy="200" r="100" fill="none" stroke="blue" stroke-width="4"/>
+        <circle cx="300" cy="200" r="5" fill="none" stroke="blue" stroke-width="4"/>
+        <circle id="object" cx="200" cy="200" r="10" fill="red" stroke="red" stroke-width="4"/>
+        <text fill="red" x="300" y="340" style="font-size: 40px;">O</text>
+    </svg>
+
+    <svg width="600px" height="500px" style="background-color: #ccc"	>
+        <circle cx="300" cy="100" r="10"/>
+        <circle cx="300" cy="300" r="10"/>
+        <circle cx="100" cy="300" r="10"/>
+        <circle cx="500" cy="300" r="10"/>
+        <line id="line" x1="300" y1="100" x2="300" y2="300" stroke="green" stroke-width="4"/>
+        <line id="A" x1="100" y1="300" x2="500" y2="300" stroke="green" stroke-width="4"/>
+        <text fill="red" x="300" y="340" style="font-size: 40px;">O</text>
+        <text fill="red" x="100" y="340" style="font-size: 40px;">-A</text>
+        <text fill="red" x="500" y="340" style="font-size: 40px;">A</text>
+    </svg>
+</body>
+</html>
+<script>
+    var line = document.getElementById("line");
+    var i = 100;
+    var A = true;
+    setInterval(function(){
+        line.x2.baseVal.value=i;
+        if(i>=500)
+            A=false;
+        if(i<=100)
+            A=true;
+        if(A==true)
+            i++;
+        else
+            i--;
+    },10);
+
+    //tron deu
+    let giatoc;
+    var object;
+    let x=0;
+    let y=0;
+    let sum;
+    let i1=100;
+    let am=true;
+    setInterval(function(){
+        object = document.getElementById("object");
+        if(am)
+            y=Math.sqrt((100*100)-(i1*i1));
+        else
+            y=-Math.sqrt((100*100)-(i1*i1));
+        object.cx.baseVal.value=300+i1;
+        object.cy.baseVal.value=200-y;
+        if(am){
+            i1--;
+        }
+        else
+            i1++;
+        if(i1==-100)
+            am = false;
+        if(i1==100)
+            am = true;
+    },10);
+
+</script>
