@@ -83,6 +83,7 @@ main .content-navleft {
   flex: 1;
   background-color: black;
   border: 1px solid red;
+  overflow-y: auto;
 }
 
 main .content-navleft .navleft {

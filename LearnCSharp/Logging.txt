@@ -1,0 +1,16 @@
+package: Microsoft.Extensions.Logging.Console
+	Hiện thị log Infomation:
+		ILoggerFactory factory = LoggerFactory.Create(config =>{
+                	config.AddConsole();
+            	});
+		ILogger<Program> logger = factory.CreateLogger<Program>();
+            	logger.LogInformation("xin chao");
+
+	Hiện thị Log Debug:
+		config.AddDebug();
+		config.SetMinimumLevel(LogLevel.Debug);
+		logger.LogDebug("sd");
+
+
+
+	ILogger, ILoggerFactory, ILoggerProvider, LoggerFactory

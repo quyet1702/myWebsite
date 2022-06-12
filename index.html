@@ -18,6 +18,7 @@
         <li><a class="Tab-List" onclick="getCourse(event, 'LearnCSS')" href="#">CSS</a></li>
         <li><a class="Tab-List" onclick="getCourse(event, 'LearnJS')" href="#">JavaScripts</a></li>
         <li><a class="Tab-List" onclick="getCourse(event, 'LearnCSharp')" href="#">CSharp</a></li>
+        <li><a class="Tab-List" onclick="getCourse(event, 'LearnSSH')" href="#">SSH</a></li>
         <li><a class="Tab-List" onclick="getCourse(event, 'LearnEnglish')" href="#">English</a></li>
         <li class="Tab-List" style="position: relative;" id="ListMedia">
           <a href="#"> Media 
@@ -48,6 +49,11 @@
       </ul>
       <ul id="LearnCSharp" class="navleft">
         <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'CSharp1')">C# 1</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'CSharp-Logging')">C# Logging</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'CSharp')">C# Tổng hợp</a></li>
+      </ul>
+      <ul id="LearnSSH" class="navleft">
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'SSH1')">SSH bài 1</a></li>
       </ul>
       <ul id="LearnEnglish" class="navleft">
         <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'English1')">English 1</a></li>
@@ -56,6 +62,18 @@
         <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Tập 1</a></li>
         <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media428')">Tập 428</a></li>
         <li><a class="navleft-item" href="#" id="live" onclick="setNavLeftItem(event, 'LiveStream')">LiveStream</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM1')">One punch man 1</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM2')">One punch man 2</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM3')">One punch man 3</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM4')">One punch man 4</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM5')">One punch man 5</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM6')">One punch man 6</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM7')">One punch man 7</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM8')">One punch man 8</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM9')">One punch man 9</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM10')">One punch man 10</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM11')">One punch man 11</a></li>
+        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM12')">One punch man 12</a></li>
       </ul>
     </div>
     <div class="tabContent" id="OverView">
@@ -77,8 +95,17 @@
     <div id="JS2" class="tabContent" style="display: none;">
       <iframe src="LearnJS/js2.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
     </div>
+    <div id="CSharp" class="tabContent" style="display: none;">
+      <iframe src="LearnCSharp/CSharp.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
+    </div>
     <div id="CSharp1" class="tabContent" style="display: none;">
       <iframe src="LearnCSharp/CSharp1.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
+    </div>
+    <div id="CSharp-Logging" class="tabContent" style="display: none;">
+      <iframe src="LearnCSharp/Logging.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
+    </div>
+    <div id="SSH1" class="tabContent" style="display: none;">
+      <iframe src="LearnSSH/SSH1.TXT"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
     </div>
     <div id="English1" class="tabContent" style="display: none;">
       <iframe src="LearnEnglish/English1.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
@@ -90,7 +117,79 @@
     </div>
     <div id="Media428" class="tabContent" style="display: none;">
       <video width="100%" controls>
-        <source src="video/doremon428.mp4" type="video/mp4">
+        <source src="video/Doremon428.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM1" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM2" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM3" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM4" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM4.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM5" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM5.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM6" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM6.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM7" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM7.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM8" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM8.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM9" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM9.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM10" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM10.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM11" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM11.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="OPM12" class="tabContent" style="display: none;">
+      <video width="100%" controls>
+        <source src="video/OPM12.mp4" type="video/mp4">
       Your browser does not support the video tag.
       </video>
     </div>
