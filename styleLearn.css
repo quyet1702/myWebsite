@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
   color: white;
+  white-space: nowrap
 }
 
 .slogan {
@@ -36,7 +37,7 @@ header .nav-left li a {
   color: white;
   display: block;
   line-height: 32px;
-  padding: 0px 16px;
+  padding: 0px 12px;
   text-decoration: none;
 }
 
