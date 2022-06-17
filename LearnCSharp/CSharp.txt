@@ -401,7 +401,10 @@ Phương thức:
 	phương thức có out:	giúp tham số truy cập cùng 1 ô nhớ, nhưng tham số đầu vào không phải gắn giá trị, mà sẽ được gắn ngay trong phương thức
 
 Đọc file:	cần sử dụng đối tượng System.IO
-	string a = File.ReadAllText("text.txt");	=> đọc tất cả đoạn text của file
+	Tạo và viết text vào file:
+		File.WriteAllText ( "log.txt" , "hello");
+	Đọc Text và lưu vào biến:
+		string a = File.ReadAllText("text.txt");
 	- var driver = DriveInfo.GetDrives();	=> trả về 1 array, mỗi phần tử là 1 ổ đĩa, trong phần tử là đối tượng chứa thông tin của ổ đĩa
 		- driver[0].TotalSize 		=> trả về số kb của ổ đĩa
 		- driver[0].Name		=> trả về tên ổ đĩa
@@ -1053,21 +1056,34 @@ khung xương của c#:
 
 
 - Xử lý ngoại lệ:
-	- Ngoại lệ của system: khi chúng ta  chạy chương trình, nếu người dùng thao tác hoặc code chạy dẫn đến lỗi thì sẽ chạy đến systemException
-		- systemException: là nơi xử lý ngoại lệ của hệ thống
-	- ngoại lệ của app: nếu chúng ta không muốn nó chạy đến SystemException thì chúng ta sẽ phải sử lý exception này
+	
 	khai báo:
-		try {//code} catch(Exception ex) {//code} finally {//code}
-		- try là khối lệnh xử lý có thể gặp lỗi do người dùng thao tác, try bắt buộc phải đi cùng catch hoặc finally hoặc cả 2
-		- catch là khối lệnh sẽ được thực thi khi chương trình bị lỗi
+		try {
+			//code
+		} catch(Exception ex) 
+		{
+			//code
+		} finally {
+			//code
+		}
+		- try xử lý các khối lệnh có thể gặp lỗi tiềm ẩn hay do thao tác người dùng
+			- try bắt buộc phải đi cùng catch hoặc finally hoặc cả 2
+		- catch là khối lệnh sẽ được thực thi khi hàm try bị lỗi
 			- 1 try có thể có nhiều catch
 				- các catch phải có tham số các nhau
 				- catch không có tham số và catch (Exception ex) luôn luôn là catch đứng cuối cùng
 					- tức là sau 2 catch này không được có catch nào khác
 		- finally là khối lệnh luôn luôn được thực thi dù chương trình có lỗi hoặc không có lỗi
-		- Exception là tham số giúp kiểm tra chi tiết lỗi và còn nhiều loại tham số khác
-			- NullReferenceException ,InvalidCastException , DivideByZeroException , InvalidOperationException , FormatException  
+			- Exception là tham số giúp kiểm tra chi tiết lỗi và còn nhiều loại tham số khác
+				- NullReferenceException ,InvalidCastException , DivideByZeroException , InvalidOperationException , FormatException  
+	- Ngoại lệ của system: khi chúng ta  chạy chương trình, nếu người dùng thao tác hoặc code chạy dẫn đến lỗi thì sẽ chạy đến systemException
+		- systemException: là nơi xử lý ngoại lệ của hệ thống
+	- ngoại lệ của app: nếu chúng ta không muốn nó chạy đến SystemException thì chúng ta sẽ phải sử lý exception này
 	- throw:
+		throw new Exception("NEM NGOAI LE");
+			- đặt vào hàm try; khi chạy đến lệnh throw nó sẽ ném vào hàm catch;
+			- các lệnh sau throw sẽ ko đc thực thi
+			- Đồng thời cho biết dòng nào chứa lệnh throw
 		- mô tả: đây là 1 biến object lưu số dòng mà nó đang được thực thi:
 			- at Program.Method2() in d:\Windows\Temp\a23cqsxm.0.cs:line 40	=> giúp nhận biết dòng lỗi trong code
 		- Sử dụng: 
