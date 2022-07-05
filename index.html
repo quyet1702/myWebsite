@@ -1,282 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="styleLearn.css"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            perspective: 800px;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .child-bottom{
+            text-align: center;
+            line-height: 200px;
+            width: 200px;
+            position: absolute;
+            height: 200px;
+            transform: rotateX(-90deg) translateZ(100px);
+            opacity: .7;
+            color: white;
+            background-color: red;
+
+        }
+        .child-left{
+            text-align: center;
+            line-height: 200px;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transform: rotateY(-90deg) translateZ(100px);
+            color: white;
+            opacity: .7;
+            background-color: blue;
+        }
+        .child-right{
+            position: absolute;
+            text-align: center;
+            line-height: 200px;
+            width: 200px;
+            height: 200px;
+            transform: rotateY(90deg) translateZ(100px);
+            color: white;
+            opacity: .7;
+            background-color: yellow;
+        }
+        .child-top{
+            position: absolute;
+            text-align: center;
+            line-height: 200px;
+            width: 200px;
+            height: 200px;
+            transform: rotateX(90deg) translateZ(100px);
+            color: white;
+            opacity: .7;
+            background-color: gray;
+        }
+        .child-back{
+            position: absolute;
+            text-align: center;
+            line-height: 200px;
+            width: 200px;
+            height: 200px;
+            transform: rotateY(180deg) translateZ(100px);
+            color: white;
+            background-color: green;
+            opacity: .7;
+        }
+        .child-font{
+            position: absolute;
+            text-align: center;
+            line-height: 200px;
+            width: 200px;
+            height: 200px;
+            transform: translateZ(100px);
+            color: white;
+            background-color: green;
+            opacity: .7;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h2 class="slogan">
-      Learning Front-End Web
-    </h2>
-    <nav>
-      <ul class="nav-left">
-        <li><a class="Tab-List active" onclick="getCourse(event, 'LearnHTML')" href="#">HTML</a></li>
-        <li><a class="Tab-List" onclick="getCourse(event, 'LearnCSS')" href="#">CSS</a></li>
-        <li><a class="Tab-List" onclick="getCourse(event, 'LearnJS')" href="#">JavaScripts</a></li>
-        <li><a class="Tab-List" onclick="getCourse(event, 'LearnCSharp')" href="#">CSharp</a></li>
-        <li><a class="Tab-List" onclick="getCourse(event, 'LearnSSH')" href="#">SSH</a></li>
-        <li><a class="Tab-List" onclick="getCourse(event, 'LearnEnglish')" href="#">English</a></li>
-        <li class="Tab-List" style="position: relative;" id="ListMedia">
-          <a href="#"> Media 
-            <i class="fa-solid fa-caret-down"></i>
-          </a>
-          <ul class="nav-sub">
-            <li><a class="Tab-List Media" onclick="getCourse(event, 'Media-Doraemon')" href="#">Doraemon</a></li>
-            <li><a class="Tab-List Media" onclick="getCourse(event, 'Media-OPM')" href="#">One Punch Man</a></li>
-            <li><a href="#">link 2</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <div class="content-navleft">
-      <ul id="LearnHTML" class="navleft" style="display: block;">
-        <li><a class="navleft-item active" href="#" onclick="setNavLeftItem(event, 'OverView')">Tổng quan</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'HtmlTool')">Chức năng</a></li>
-      </ul>
-      <ul id="LearnCSS" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Css1')">Layout</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Css2')">Navbar</a></li>
-      </ul>
-      <ul id="LearnJS" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'JS1')">JavaScripts 1</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'JS2')">JavaScripts 2</a></li>
-      </ul>
-      <ul id="LearnCSharp" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'CSharp1')">C# 1</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'CSharp-Logging')">C# Logging</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'CSharp')">C# Tổng hợp</a></li>
-      </ul>
-      <ul id="LearnSSH" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'SSH1')">SSH bài 1</a></li>
-      </ul>
-      <ul id="LearnEnglish" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'English1')">English 1</a></li>
-      </ul>
-      <ul id="Media-OPM" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM1')">One punch man 1</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM2')">One punch man 2</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM3')">One punch man 3</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM4')">One punch man 4</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM5')">One punch man 5</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM6')">One punch man 6</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM7')">One punch man 7</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM8')">One punch man 8</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM9')">One punch man 9</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM10')">One punch man 10</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM11')">One punch man 11</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'OPM12')">One punch man 12</a></li>
-      </ul>
-      <ul id="Media-Doraemon" class="navleft">
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media1')">Tập 1</a></li>
-        <li><a class="navleft-item" href="#" onclick="setNavLeftItem(event, 'Media428')">Tập 428</a></li>
-        <li><a class="navleft-item" href="#" id="live" onclick="setNavLeftItem(event, 'LiveStream')">LiveStream</a></li>
-      </ul>
+    <div class="container">
+            <div class="box" id="box-element">
+                <div class="child-bottom">bottom</div>
+                <div class="child-left">Left</div>
+                <div class="child-right">Right</div>
+                <div class="child-top">Top</div>
+                <div class="child-back">Back</div>
+                <svg class="child-font" width="100" height="100">
+                    <path d="M2 2 l100 100 Z" />
+                </svg>
+            </div>
+        </div>
     </div>
-    <div class="tabContent" id="OverView">
-      <iframe src="HTML.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description"></iframe>
-    </div>
-    <div class="tabContent" id="HtmlTool" style="display: none;">
-      <iframe src="HtmlTool.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-      
-    </div>
-    <div class="tabContent" style="display: none;" id="Css1">
-      <iframe src="Document/Layout.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div class="tabContent" style="display: none;" id="Css2">
-      <iframe src="Document/Navbar.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="JS1" class="tabContent" style="display: none;">
-      <iframe src="LearnJS/js.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="JS2" class="tabContent" style="display: none;">
-      <iframe src="LearnJS/js2.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="CSharp" class="tabContent" style="display: none;">
-      <iframe src="LearnCSharp/CSharp.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="CSharp1" class="tabContent" style="display: none;">
-      <iframe src="LearnCSharp/CSharp1.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="CSharp-Logging" class="tabContent" style="display: none;">
-      <iframe src="LearnCSharp/Logging.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="SSH1" class="tabContent" style="display: none;">
-      <iframe src="LearnSSH/SSH1.TXT"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="English1" class="tabContent" style="display: none;">
-      <iframe src="LearnEnglish/English1.txt"  style="background-color: white;  resize: vertical; width: 100%; height: 80vh;" title="description" width="500px"></iframe>
-    </div>
-    <div id="Media1" class="tabContent" style="display: none;">
-      <video id="videoMedia1" width="100%" controls>
-        <source src="video/Doremon1.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div id="Media428" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/Doremon428.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM1" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM2" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM3" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM3.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM4" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM4.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM5" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM5.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM6" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM6.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM7" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM7.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM8" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM8.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM9" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM9.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM10" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM10.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM11" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM11.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="OPM12" class="tabContent" style="display: none;">
-      <video width="100%" controls>
-        <source src="video/OPM12.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-    <div id="LiveStream" class="tabContent" style="display: none;">
-      <video id="LiveStream1" width="100%" controls>
-        <source type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
-    </div>
-  </main>
-  <footer style="text-align: center;">
-    <p>Contact: quyet1702@gmail.com</p>
-  </footer>
 </body>
 </html>
 <script>
-  
- var getLive=null;
-  function getCourse(event, id){
-
-    //begin: toggle active
-    var tablinks = document.getElementsByClassName("Tab-List");
-    for(var i=0;i <tablinks.length; i++){
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    };
-    event.currentTarget.classList.add("active");
-    if(event.currentTarget.classList.contains("Media")){
-      document.getElementById("ListMedia").classList.add("active");
+    box();
+    
+    // equilateralTriangle("triangle-bottom");
+    // equilateralTriangle("triangle-top");
+    // parallelogram("parallelogram-left");
+    // parallelogram("parallelogram-right");
+    // parallelogram("parallelogram-back");
+    // document.getElementById("parallelogram-left").style.transform = `rotateY(-60deg) translateX(${100*Math.sqrt(3)/4}px)`;
+    // document.getElementById("parallelogram-right").style.transform = `rotateY(60deg) translateX(${100*Math.sqrt(3)/4}px)`;
+    //  document.getElementById("triangle-bottom").style.transform = `rotateX(-80deg) translateZ(${100*Math.sqrt(3)/4}px)`;
+    function equilateralTriangle(id){
+        var path = document.getElementById(id);
+        var sum = (100*Math.sqrt(3))/2;
+        path.setAttribute("d",`M0 8 l100 0 l-50 ${sum} Z`);
     }
-    //end: toggle active
 
-    //Begin: get NavLeft
-    var listContent = document.getElementsByClassName("navleft");
-    for(var i=0;i <listContent.length; i++){
-      listContent[i].style.display="none";
+    function parallelogram(id){
+        var path = document.getElementById(id);
+        var sum = (100*Math.sqrt(3))/2;
+        path.setAttribute("d",`M80 90 l100 0 l0 100 l-100 0 Z`);
     }
-    document.getElementById(id).style.display="block";
-    //End: get NavLeft
+    function box() {
+        var x = 0;
+        var y = 0;
+        var degX = 0;
+        var degY = 0;
+        var pointX=0;
+        var pointY=0;
+        var box = document.getElementById("box-element");
+        box.addEventListener("mousemove",(e)=>{
+            if(Math.abs(pointX-e.clientX)> 20 || Math.abs(pointY-e.clientY)> 5){
+                pointY = e.clientY;
+                pointX = e.clientX;
+            }
+            else 
+                if (pointX < e.clientX){
+                    degX += (e.clientX-pointX)*2;
+                    box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                    pointX = e.clientX;
+                }
+                else 
+                    if (pointX > e.clientX){
+                        degX -= (pointX - e.clientX)*2;
+                        box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                        pointX = e.clientX;
+                    }
+                if (pointY < e.clientY){
+                    degY -= (e.clientY-pointY)*2;
+                    box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                    pointY = e.clientY;
+                }
+                else 
+                    if (pointY > e.clientY){
+                        degY += (pointY - e.clientY)*2;
+                        box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                        pointY = e.clientY;
+                    }
+        });
+        box.addEventListener("touchmove",(e)=>{
+            if(Math.abs(pointX-e.touches[0].clientX)> 20 || Math.abs(pointY-e.touches[0].clientY)> 5){
+                pointY = e.touches[0].clientY;
+                pointX = e.touches[0].clientX;
+            }
+            else 
+                if (pointX < e.touches[0].clientX){
+                    degX += (e.touches[0].clientX-pointX)*2;
+                    box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                    pointX = e.touches[0].clientX;
+                }
+                else 
+                    if (pointX > e.touches[0].clientX){
+                        degX -= (pointX - e.touches[0].clientX)*2;
+                        box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                        pointX = e.touches[0].clientX;
+                    }
+                if (pointY < e.touches[0].clientY){
+                    degY -= (e.touches[0].clientY-pointY)*2;
+                    box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                    pointY = e.touches[0].clientY;
+                }
+                else 
+                    if (pointY > e.touches[0].clientY){
+                        degY += (pointY - e.touches[0].clientY)*2;
+                        box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+                        pointY = e.touches[0].clientY;
+                    }
+        });
+        box.addEventListener("mouseup",(e)=>{
+                pointY = e.clientY;
+                pointX = e.clientX;
+        });
+        
+        setInterval(()=>{
+            degY = degY+0.5;
+            degX = degX+0.2;
+            box.style.transform = `rotateX(${degY}deg) rotateY(${degX}deg)`;
+        },10);
 
-
-    //begin: stop all video are runing
-    document.querySelectorAll("video").forEach(function(value){
-      value.pause();
-    });
-    if(getLive!=null){
-      getLive.stop();
     }
-    //end: stop all video are runing
+    /*
+        Bước 1:
+            Đầu vào: x = 0, y = 0, độ deg X, độ deg Y, độ deg Z
+        Bước 2:
+            Tạo Event mousemove
+            Tạo cờ = 0;
+            if cờ = 0
+                gắn cờ = e.clientX
+            if cờ < e.clientX;
+                a = e.lientX - x;
+                cờ = e.clientX;
+                gắn a vào rotate của box
+            if cờ > e.clientX;
+                a = cờe.lientX - x);
+                cờ = e.clientX;
+                gắn a vào rotate của box
 
-  }
-  function setNavLeftItem(event, id){
-    var tablinks = document.getElementsByClassName("navleft-item");
-    for(var i=0;i <tablinks.length; i++){
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    };
-    event.currentTarget.classList.add("active");
-    var listContent = document.getElementsByClassName("tabContent");
+        Bước 3:
+            Đầu ra: số độ quay rotateX(), rotateY(), rotateZ()
 
-    for(var i=0;i <listContent.length; i++){
-      
-      listContent[i].style.display="none";
-
-    }
-    document.querySelectorAll("video").forEach(function(value){
-      value.pause();
-      
-    });
-    if(getLive!=null){
-      getLive.stop();
-    }
-    document.getElementById(id).style.display="block";
-  }
-  document.getElementById("videoMedia1").preload = "auto";
-document.getElementById("live").addEventListener("click",e => {
-
-  var imageCapture;
-  navigator.mediaDevices.getUserMedia({video: true})
-  .then(mediaStream => {
-    document.getElementById('LiveStream1').srcObject = mediaStream;
-
-    getLive = mediaStream.getVideoTracks()[0];
-    imageCapture = new ImageCapture(getLive);
-    return imageCapture.getPhotoCapabilities();
-  })
-});
-
-  
+    */
 </script>

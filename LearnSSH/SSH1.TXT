@@ -9,3 +9,4 @@ Learn SSH:
 		- tạo 1 server và các client
 		- tạo kết nối từ server đến client
 			điều kiện: client phải có chương trình ssh (các hđh đều có sẵn ko cần cài đặt; cmd: ssh -v)
+	
